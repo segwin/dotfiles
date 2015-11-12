@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/srv/www/htdocs/sip_callgen'
+let g:netrw_dirhist_2='/home/loracett/bertapp/application/sample/DspTrafficGenerator'
+let g:netrw_dirhist_3='/home/loracett/bertapp/application/sample/DspTrafficGenerator/source'
+let g:netrw_dirhist_4='/home/loracett/bertapp/application/sample/DspTrafficGenerator'
+let g:netrw_dirhist_5='/home/loracett/bertapp/application/sample/DspTrafficGenerator/source'
+let g:netrw_dirhist_6='/home/loracett/bertapp/application/sample/DspTrafficGenerator'
+let g:netrw_dirhist_7='/home/loracett/729_cap/tests/vocoders/g729/x86'
