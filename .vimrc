@@ -63,3 +63,8 @@ set directory=.,~/.vim/swap,/tmp
 "set foldmethod=indent
 set foldmethod=syntax
 set foldlevelstart=20 
+
+
+" any buffer can be hidden (keeping its changes) without first writing the 
+" buffer to a file. This affects all commands and all buffers.
+set hidden
