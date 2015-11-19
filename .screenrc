@@ -8,7 +8,8 @@ defscrollback 30000
 
 # Window list at the bottom.
 hardstatus alwayslastline
-#hardstatus string "%-w%{= BW}%50>%n %t%{-}%+w%<"
+
+# form https://gist.github.com/joaopizani/2718397
 hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %C%A%{-}'
 
 
