@@ -14,7 +14,7 @@ set nowrap
 
 " color theme
 set background=dark
-" let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 set term=xterm-256color
 colorscheme vendetta 
 
@@ -56,8 +56,8 @@ set undofile
 set undodir=~/.vim/undo/
 
 " put swap files in common dir
-set backupdir=~/.vim/swap,.,/tmp
-set directory=.,~/.vim/swap,/tmp
+set backupdir=~/.vim/swap//,.,/tmp
+set directory=~/.vim/swap//,.,/tmp
 
 " automatically create folds on indents, open all folds
 "set foldmethod=indent

@@ -15,10 +15,38 @@ sorendition + WK
 hardstatus alwayslastline
 
 # form https://gist.github.com/joaopizani/2718397
-hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %C%A%{-}'
+#hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %c:%s %{-}'
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%l%{KW}|%D %M %d %Y%{= Kc} %c:%s %{-}'
 
 #name of the window 
-caption splitonly '%?%F%{= KW}%:%{= Kd}%? %n %t'
+caption splitonly '%?%F%{= KW}%:%{= Kd}%?   %n %t'
 
 
 
+#screen -t "scg - vim" 
+#select 0
+#stuff "cd AMS;vim *^M"
+#
+#screen -t "scg - bash"
+#
+#
+#screen -t "acs" 
+#select 2
+#stuff "ssh acs^M"
+#
+#screen -t "mg" 
+#select 3
+#stuff "ssh mg^M"
+#
+#screen -t "imedia" 
+#select 4
+#stuff "ssh imedia^M"
+#
+#screen -t "idsp" 
+#select 5
+#stuff "ssh idsp^M"
+#
+#screen -t "redis" 
+#select 6
+#stuff "ssh redis-vm^M"
+#
