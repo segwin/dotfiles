@@ -68,3 +68,9 @@ set foldlevelstart=20
 " any buffer can be hidden (keeping its changes) without first writing the 
 " buffer to a file. This affects all commands and all buffers.
 set hidden
+
+" When you type the first tab hit will complete as much as possible, the 
+" second tab hit will provide a list, the third and subsequent tabs will cycle 
+" through completion options so you can complete the file without further keys
+set wildmode=longest,list,full
+set wildmenu
