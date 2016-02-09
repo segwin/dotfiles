@@ -1,4 +1,35 @@
-syntax enable
+set nocompatible               " be iMproved
+filetype off                   " must be off before Vundle has run
+
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+    if executable('git')
+        !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        !vim +PluginInstall +qall && mkdir -p ~/.vim/undo && mkdir -p ~/.vim/swap
+    endif
+endif
+
+if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+
+    " Brief help
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    call vundle#begin()
+
+    Plugin 'gmarik/Vundle.vim'
+
+    Plugin 'chazy/cscope_maps'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'nathanaelkane/vim-indent-guides'
+    Plugin 'evgenyzinoviev/vim-vendetta'
+
+    "
+    call vundle#end()
+endif
+filetype plugin indent on     " and turn it back on!
+
 
 " Identation
 set expandtab
@@ -13,10 +44,11 @@ set nu
 set nowrap
 
 " color theme
+syntax enable
+set t_Co=256
 set background=dark
-let g:solarized_termcolors=256
 set term=xterm-256color
-colorscheme vendetta 
+colorscheme vendetta
 
 " End-of-line options
 set fileformats=unix,dos
@@ -74,3 +106,16 @@ set hidden
 " through completion options so you can complete the file without further keys
 set wildmode=longest,list,full
 set wildmenu
+
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
+
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black    ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=234
+
