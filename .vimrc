@@ -116,6 +116,10 @@ endif
 "let g:indent_guides_guide_size=1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black    ctermbg=233
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=232
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black    ctermbg=233 ctermfg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=232 ctermfg=235
 
+" configurations depending on file type
+autocmd FileType make set noexpandtab
+autocmd BufRead,BufNewFile   *.html,*.php setl sw=2 sts=2 et
+autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
