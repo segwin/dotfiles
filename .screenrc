@@ -14,9 +14,10 @@ sorendition + WK
 # Window list at the bottom.
 hardstatus alwayslastline
 
+backtick 0 0 0 sh -c 'date +%Z'
+
 # form https://gist.github.com/joaopizani/2718397
-hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%l%{KW}|%D %M %d %Y%{= Kc} %c:%s %{-}'
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%l%{KW}|%D %M %d %Y%{= Kc} %c:%s %` %{-}'
 
 #name of the window 
 caption splitonly '%?%F%{= KW}%:%{= Kd}%?   %n %t'
-
