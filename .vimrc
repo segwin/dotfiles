@@ -1,22 +1,27 @@
 set nocompatible               " be iMproved
 filetype off                   " must be off before Vundle has run
 
-if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+" allow .vimrc and .vim/ to be somewhere else than ~
+let VIMRC_DIR=expand('%:p:h')
+let BUNDLE_DIR=VIMRC_DIR . '/.vim/bundle/'
+execute 'set runtimepath^=' . VIMRC_DIR . '/.vim/'
+
+if !isdirectory(BUNDLE_DIR . '/Vundle.vim/.git')
     if executable('git')
-        !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        !vim +PluginInstall +qall && mkdir -p ~/.vim/undo && mkdir -p ~/.vim/swap
+        execute  '!git clone https://github.com/gmarik/Vundle.vim.git ' . BUNDLE_DIR . 'Vundle.vim/'
+        execute '!vim +PluginInstall +qall && mkdir -p ' . VIMRC_DIR . '/.vim/undo && mkdir -p ' . VIMRC_DIR . '/.vim/swap'
     endif
 endif
 
-if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
-    set runtimepath+=~/.vim/bundle/Vundle.vim
+if isdirectory(BUNDLE_DIR . '/Vundle.vim/.git')
+    execute 'set runtimepath+=' . BUNDLE_DIR . 'Vundle.vim/'
 
     " Brief help
     " :PluginList       - lists configured plugins
     " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
     " :PluginSearch foo - searches for foo; append `!` to refresh local cache
     " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    call vundle#begin()
+    call vundle#begin(BUNDLE_DIR)
 
     Plugin 'gmarik/Vundle.vim'
 
@@ -85,11 +90,11 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " tell it to use an undo file
 set undofile
 " set a directory to store the undo history
-set undodir=~/.vim/undo/
+execute 'set undodir=' . VIMRC_DIR . '/.vim/undo/'
 
 " put swap files in common dir
-set backupdir=~/.vim/swap//,.,/tmp
-set directory=~/.vim/swap//,.,/tmp
+execute 'set backupdir=' . VIMRC_DIR . '/.vim/swap//,.,/tmp'
+execute 'set directory=' . VIMRC_DIR . '/.vim/swap//,.,/tmp'
 
 " automatically create folds on indents, open all folds
 "set foldmethod=indent
