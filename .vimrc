@@ -2,7 +2,7 @@ set nocompatible               " be iMproved
 filetype off                   " must be off before Vundle has run
 
 " allow .vimrc and .vim/ to be somewhere else than ~
-let VIMRC_DIR=expand('%:p:h')
+let VIMRC_DIR=fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let BUNDLE_DIR=VIMRC_DIR . '/.vim/bundle/'
 execute 'set runtimepath^=' . VIMRC_DIR . '/.vim/'
 
