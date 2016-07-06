@@ -1,34 +1,33 @@
 set nocompatible               " be iMproved
 filetype off                   " must be off before Vundle has run
 
-" allow .vimrc and .vim/ to be somewhere else than ~
-let VIMRC_DIR=fnamemodify(resolve(expand('<sfile>:p')), ':h')
-let BUNDLE_DIR=VIMRC_DIR . '/.vim/bundle/'
-execute 'set runtimepath^=' . VIMRC_DIR . '/.vim/'
-
-if !isdirectory(BUNDLE_DIR . '/Vundle.vim/.git')
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     if executable('git')
-        execute  '!git clone https://github.com/gmarik/Vundle.vim.git ' . BUNDLE_DIR . 'Vundle.vim/'
-        execute '!vim +PluginInstall +qall && mkdir -p ' . VIMRC_DIR . '/.vim/undo && mkdir -p ' . VIMRC_DIR . '/.vim/swap'
+        !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        !vim +PluginInstall +qall && mkdir -p ~/.vim/undo && mkdir -p ~/.vim/swap
     endif
 endif
 
-if isdirectory(BUNDLE_DIR . '/Vundle.vim/.git')
-    execute 'set runtimepath+=' . BUNDLE_DIR . 'Vundle.vim/'
+if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+    set runtimepath+=~/.vim/bundle/Vundle.vim
 
     " Brief help
     " :PluginList       - lists configured plugins
     " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
     " :PluginSearch foo - searches for foo; append `!` to refresh local cache
     " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    call vundle#begin(BUNDLE_DIR)
+    call vundle#begin()
 
     Plugin 'gmarik/Vundle.vim'
 
     Plugin 'chazy/cscope_maps'
     Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'majutsushi/tagbar'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'evgenyzinoviev/vim-vendetta'
+	Plugin 'kshenoy/vim-signature'
+	Plugin 'mrtazz/DoxygenToolkit.vim'
 
     "
     call vundle#end()
@@ -86,15 +85,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
+"https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1
+let g:airline_theme="tomorrow"
+
 
 " tell it to use an undo file
 set undofile
 " set a directory to store the undo history
-execute 'set undodir=' . VIMRC_DIR . '/.vim/undo/'
+set undodir=~/.vim/undo/
 
 " put swap files in common dir
-execute 'set backupdir=' . VIMRC_DIR . '/.vim/swap//,.,/tmp'
-execute 'set directory=' . VIMRC_DIR . '/.vim/swap//,.,/tmp'
+set backupdir=~/.vim/swap//,.,/tmp
+set directory=~/.vim/swap//,.,/tmp
 
 " automatically create folds on indents, open all folds
 "set foldmethod=indent
@@ -126,5 +129,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=232 c
 
 " configurations depending on file type
 autocmd FileType make set noexpandtab
-autocmd BufRead,BufNewFile   *.html,*.php setl sw=2 sts=2 et
+autocmd BufRead,BufNewFile   *.html,*.php setl sw=2 sts=2 et foldmethod=indent
 autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
+
+let g:DoxygenToolkit_commentType = "C++"
+
