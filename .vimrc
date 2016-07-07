@@ -31,7 +31,7 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
 endif
 filetype plugin indent on     " and turn it back on!
 
-o
+
 " ====================================
 " vim Configuration
 " ====================================
