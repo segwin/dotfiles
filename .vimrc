@@ -18,14 +18,28 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
 
     Plugin 'gmarik/Vundle.vim'
 
+    " UI
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'evgenyzinoviev/vim-vendetta'
-    Plugin 'majutsushi/tagbar'
     Plugin 'kshenoy/vim-signature'
+
+    " Colorscheme
+    Plugin 'evgenyzinoviev/vim-vendetta'
+    Plugin 'morhetz/gruvbox'
+
+    " Shortcuts
     Plugin 'chazy/cscope_maps'
     Plugin 'mrtazz/DoxygenToolkit.vim'
+
+    " asy way to browse the tags of the current file and get an overview of
+    " its structure.
+    Plugin 'majutsushi/tagbar'
+
+    " Code completion many requirements
+    "Plugin 'Valloric/YouCompleteMe'
+    "Plugin 'rdnetto/YCM-Generator'
+
 
     call vundle#end()
 endif
@@ -47,11 +61,11 @@ inoremap jk <esc>
 
 " color theme
 syntax enable
-set t_Co=256
-set term=xterm-256color
 set background=dark
 try
-    colorscheme vendetta
+"    colorscheme vendetta
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark = 'hard'
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -70,8 +84,8 @@ autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
 " End-of-line options
 set fileformats=unix,dos
 
-" struct member autocomple
-set omnifunc=ccomplete#Complete
+" struct member autocomple, c only, if YCM is not used
+"set omnifunc=ccomplete#Complete
 
 " Always show status line
 set laststatus=2
@@ -107,6 +121,9 @@ if &diff
     set diffopt+=iwhite
 endif
 
+"  highlight the current line in every window and update the highlight as the
+"  cursor moves.
+set cursorline
 
 " ====================================
 " Plugin Configuration
@@ -122,10 +139,11 @@ let g:airline_theme="tomorrow"
 
 " vim-indent-guides
 " ------------
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black    ctermbg=233 ctermfg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=232 ctermfg=235
+"let g:indent_guides_enable_on_vim_startup = 0 " \-ig
+"let g:indent_guides_guide_size = 1
+"let g:indent_guides_auto_colors = 0
+"    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black    ctermbg=233 ctermfg=235
+"    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=232 ctermfg=235
 
 " DoxygenToolkit
 " ------------

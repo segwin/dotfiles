@@ -6,6 +6,12 @@ altscreen on
 # Enable 256 color term
 term xterm-256color
 
+# This forces background colours to refresh.
+#  If bce is set to “on”, all characters cleared by an erase/insert/scroll/clear 
+#  operation will be displayed in the current background color. 
+#  Otherwise the default background color is used."
+defbce "on"
+
 # Cache 30000 lines for scroll back
 defscrollback 30000
 
@@ -22,3 +28,6 @@ hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= 
 
 #name of the window 
 caption splitonly '%?%F%{= KW}%:%{= Kd}%?   %n %t'
+
+# Ctrl-space instead of Ctrl-a
+escape ^@@
