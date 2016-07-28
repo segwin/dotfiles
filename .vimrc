@@ -1,9 +1,8 @@
 set nocompatible               " be iMproved
 
 " ====================================
-" Plugin Management with Vundle
+" First time load, install plugins
 " ====================================
-filetype off                   " must be off before Vundle has run
 if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     if executable('git')
         !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -11,36 +10,21 @@ if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     endif
 endif
 
+" ====================================
+" Plugin Management with Vundle
+" ====================================
+filetype off                   " must be off before Vundle has run
 if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     set runtimepath+=~/.vim/bundle/Vundle.vim
     " :PluginInstall, PluginUpdate, PluginClean
     call vundle#begin()
-
-    Plugin 'gmarik/Vundle.vim'
-
-    " UI
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    Plugin 'kshenoy/vim-signature'
-
-    " Colorscheme
-    Plugin 'evgenyzinoviev/vim-vendetta'
-    Plugin 'morhetz/gruvbox'
-
-    " Shortcuts
-    Plugin 'chazy/cscope_maps'
-    Plugin 'mrtazz/DoxygenToolkit.vim'
-
-    " asy way to browse the tags of the current file and get an overview of
-    " its structure.
-    Plugin 'majutsushi/tagbar'
-
-    " Code completion many requirements
-    "Plugin 'Valloric/YouCompleteMe'
-    "Plugin 'rdnetto/YCM-Generator'
-
-
+    Plugin 'gmarik/Vundle.vim'               " manage Vundle wiht Vundle
+    Plugin 'vim-airline/vim-airline'         " nice status bar
+    Plugin 'nathanaelkane/vim-indent-guides' " toggle: \-ig
+    Plugin 'kshenoy/vim-signature'           " show marks beside line no
+    Plugin 'morhetz/gruvbox'                 " Colorscheme
+    Plugin 'majutsushi/tagbar'               " Code navigation
+    "Plugin 'Valloric/YouCompleteMe'         " Code completion requires clang
     call vundle#end()
 endif
 filetype plugin indent on     " and turn it back on!
@@ -63,7 +47,6 @@ inoremap jk <esc>
 syntax enable
 set background=dark
 try
-"    colorscheme vendetta
     colorscheme gruvbox
     let g:gruvbox_contrast_dark = 'hard'
 catch /^Vim\%((\a\+)\)\=:E185/
@@ -85,7 +68,7 @@ autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
 set fileformats=unix,dos
 
 " struct member autocomple, c only, if YCM is not used
-"set omnifunc=ccomplete#Complete
+set omnifunc=ccomplete#Complete
 
 " Always show status line
 set laststatus=2
@@ -125,6 +108,7 @@ endif
 "  cursor moves.
 set cursorline
 
+
 " ====================================
 " Plugin Configuration
 " ====================================
@@ -135,17 +119,3 @@ let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
-let g:airline_theme="tomorrow"
-
-" vim-indent-guides
-" ------------
-"let g:indent_guides_enable_on_vim_startup = 0 " \-ig
-"let g:indent_guides_guide_size = 1
-"let g:indent_guides_auto_colors = 0
-"    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black    ctermbg=233 ctermfg=235
-"    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey ctermbg=232 ctermfg=235
-
-" DoxygenToolkit
-" ------------
-let g:DoxygenToolkit_commentType = "C++"
-
