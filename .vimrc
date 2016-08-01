@@ -7,6 +7,8 @@ if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     if executable('git')
         !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         !vim +PluginInstall +qall && mkdir -p ~/.vim/undo && mkdir -p ~/.vim/swap
+    else
+        echom "Please install git to allow plugin configuration through Vundle"
     endif
 endif
 
@@ -108,6 +110,49 @@ endif
 "  cursor moves.
 set cursorline
 
+
+"cscope config
+if has('cscope')
+    set cscopetag cscopeverbose
+
+    if has('quickfix')
+        set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
+
+    if filereadable("cscope.out")
+        try
+            cs add cscope.out
+        catch /^Vim\%((\a\+)\)\=:E568/
+        endtry
+    endif
+
+    """"""""""""" cscope/vim key mappings
+    "   's'   symbol: find all references to the token under cursor
+    "   'g'   global: find global definition(s) of the token under cursor
+    "   'c'   calls:  find all calls to the function name under cursor
+    "   't'   text:   find all instances of the text under cursor
+    "   'e'   egrep:  egrep search for the word under cursor
+    "   'f'   file:   open the filename under cursor
+    "   'i'   includes: find files that include the filename under cursor
+    "   'd'   called: find functions that function under cursor calls
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+    nmap <C-\><C-\>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\><C-\>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-\><C-\>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\><C-\>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+endif
 
 " ====================================
 " Plugin Configuration
