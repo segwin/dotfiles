@@ -160,7 +160,23 @@ endif
 
 " vim-airline
 " ------------
+"  " don't count trailing whitespace since it lags in huge files
+let g:airline#extensions#whitespace#enabled = 0
+"  " put a buffer list at the top
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"special characters
 let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
+" use when a powerline font is not installed, define empty  powerline symbols
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = 'B'
+let g:airline_symbols.readonly = 'R'
+let g:airline_symbols.linenr = 'N'
