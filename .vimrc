@@ -116,6 +116,19 @@ endif
 set cursorline
 
 
+if has("gui_running")
+    try
+        if has('gui_win32')
+            set guifont=Inconsolata-dz_for_Powerline:h10:cANSI
+        else
+            set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 10
+        endif
+    catch /^Vim\%((\a\+)\)\=:E596/
+        echom "The Inconsolata-dz_for_Powerline font is not installed"
+    endtry
+endif
+
+
 "cscope config
 if has('cscope')
     set cscopetag
