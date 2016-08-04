@@ -26,6 +26,11 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     Plugin 'kshenoy/vim-signature'           " show marks beside line no
     Plugin 'morhetz/gruvbox'                 " Colorscheme
     Plugin 'majutsushi/tagbar'               " Code navigation
+    Plugin 'tpope/vim-fugitive'              " git plugin
+    Plugin 'scrooloose/nerdtree'             " File explorer
+    Plugin 'Xuyuanp/nerdtree-git-plugin'     " git status symbole in NERDTree
+    Plugin 'hari-rangarajan/CCTree'          " Call graph, uses cssope
+    Plugin 'vim-scripts/DrawIt'              " draw boxes and arrows
     "Plugin 'Valloric/YouCompleteMe'         " Code completion requires clang
     call vundle#end()
 endif
@@ -113,7 +118,7 @@ set cursorline
 
 "cscope config
 if has('cscope')
-    set cscopetag cscopeverbose
+    set cscopetag
 
     if has('quickfix')
         set cscopequickfix=s-,c-,d-,i-,t-,e-
@@ -173,10 +178,21 @@ let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = 'B'
-let g:airline_symbols.readonly = 'R'
-let g:airline_symbols.linenr = 'N'
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = 'B'
+"let g:airline_symbols.readonly = 'R'
+"let g:airline_symbols.linenr = 'N'
+
+" NERDTree
+" ------------
+autocmd VimEnter * NERDTreeFind
+autocmd VimEnter * wincmd p
+
+" Tagbar
+" ------------
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+
+
