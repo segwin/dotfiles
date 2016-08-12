@@ -86,7 +86,7 @@ URxvt*scrollBar_floating:               false
 ! URxvt*blurRadius:                     HxV
 
 ! Fade the text by the given percentage when focus is lost
-URxvt*fading:                           10
+URxvt*fading:                           20
 
 ! Fade to this colour, when fading is used (see fading:). The default colour is black
 ! URxvt*fadeColor:                        Green
