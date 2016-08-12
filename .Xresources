@@ -183,10 +183,10 @@ URxvt*underlineColor:                   yellow
 
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters
-URxvt*font:                             xft:Inconsolata:size=12,xft:Inconsolata\ for\ Powerline:size=12,Awesome:size=12
-URxvt*boldFont:                         xft:Inconsolata:bold:size=12,xft:Inconsolata\ for\ Powerline:size=12,Awesome:size=12
-URxvt*italicFont:                       xft:Inconsolata:italic:autohint=true:size=12,xft:Inconsolata\ for\ Powerline:size=12,Awesome:size=12
-URxvt*boldItalicFont:                   xft:Inconsolata:bold:italic:autohint=true:size=12,xft:Inconsolata\ for\ Powerline:size=12,Awesome:size=12
+URxvt*font:                             xft:Inconsolata:size=12:antialias=true:hinting=true,xft:Inconsolata\ for\ Powerline:size=12:antialias=true:hinting=true,Awesome:size=12
+URxvt*boldFont:                         xft:Inconsolata:bold:size=12:antialias=true:hinting=true,xft:Inconsolata\ for\ Powerline:size=12:antialias=true:hinting=true,Awesome:size=12
+URxvt*italicFont:                       xft:Inconsolata:italic:autohint=true:size=12:antialias=true:hinting=true,xft:Inconsolata\ for\ Powerline:size=12:antialias=true:hinting=true,Awesome:size=12
+URxvt*boldItalicFont:                   xft:Inconsolata:bold:italic:autohint=true:size=12:antialias=true:hinting=true,xft:Inconsolata\ for\ Powerline:size=12:antialias=true:hinting=true,Awesome:size=12
 
 ! When font styles are not enabled, or this option is enabled (True default), bold/blink font styles imply high intensity foreground/background colours
 ! URxvt*intensityStyles:                boolean
