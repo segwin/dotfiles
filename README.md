@@ -12,8 +12,28 @@ with the following packages:
     x11-xserver-utils conky
     fonts-inconsolata fonts-font-awesome
 
+## other software
+
+### packages
+
+    usbmount vpnc firefox remmina cryptsetup$
+
+### chrome
+
+     wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+     sudo add-apt-repository -y "deb http://dl.google.com/linux/chrome/deb/ stable main"
+     sudo apt-get install google-chrome-stable
+
+### atom
+
+    wget https://github.com/atom/atom/releases/download/v1.9.8/atom-amd64.deb
+    sudo dpkg --install atom-amd64.deb
+    sudo apt-get -f install
 
 ## credits
 ### .conky
-taken from:
 https://github.com/ThatJames/Conky
+
+### conky for i3Bar
+http://pastebin.com/h1g6FTD6
+
