@@ -14,6 +14,11 @@ with the following packages:
 
 ## other software
 
+### powerline font
+
+     cd /usr/share/fonts/truetype/
+     sudo wget https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf
+
 ### packages
 
     usbmount vpnc firefox remmina cryptsetup$

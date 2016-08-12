@@ -186,18 +186,18 @@ let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 "special characters
-"let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
+let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
 " use when a powerline font is not installed, define empty  powerline symbols
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = 'B'
-let g:airline_symbols.readonly = 'R'
-let g:airline_symbols.linenr = 'N'
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = 'B'
+"let g:airline_symbols.readonly = 'R'
+"let g:airline_symbols.linenr = 'N'
 
 " NERDTree
 " ------------
