@@ -17,7 +17,9 @@ with the following packages:
 ### powerline font
 
      cd /usr/share/fonts/truetype/
-     sudo wget https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf
+     sudo wget https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf?raw=1
+     mv Inconsolata\ for\ Powerline.otf\?raw=1 Inconsolata\ for\ Powerline.otf
+     fc-cache -f .
 
 ### packages
 
