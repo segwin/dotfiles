@@ -30,7 +30,11 @@ shopt -s globstar
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# If this is an xterm set the title to user@host:dir
+#colors
+if [ "x$TERM" = "xxterm" ]
+then
+    export TERM="xterm-256color"
+fi
 case "$TERM" in
 xterm*|rxvt*)
     trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG
@@ -65,6 +69,7 @@ alias du1='sudo du -h -d 1 . 2>/dev/null | sort -r -h -k1'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 
 
 export EDITOR=/usr/bin/vim

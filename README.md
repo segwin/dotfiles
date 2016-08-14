@@ -8,11 +8,16 @@
 
 with the following packages:
 
-    i3 rxvt-unicode-256color lightdm
-    x11-xserver-utils conky
-    fonts-inconsolata fonts-font-awesome
+    i3 lxterminal rxvt-unicode-256color lightdm
+    x11-xserver-utils
+    rofi compton conky
+    fonts-inconsolata fonts-powerline fonts-font-awesome
 
 ## other software
+
+### packages
+
+    usbmount vpnc firefox remmina cryptsetup
 
 ### powerline font
 
@@ -20,10 +25,6 @@ with the following packages:
      sudo wget https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf?raw=1
      mv Inconsolata\ for\ Powerline.otf\?raw=1 Inconsolata\ for\ Powerline.otf
      fc-cache -f .
-
-### packages
-
-    usbmount vpnc firefox remmina cryptsetup$
 
 ### chrome
 
@@ -44,3 +45,11 @@ https://github.com/ThatJames/Conky
 ### conky for i3Bar
 http://pastebin.com/h1g6FTD6
 
+
+### 3wm: How To
+https://www.youtube.com/playlist?list=PL5ze0DjYv5DbCv9vNEzFmP6sU7ZmkGzcf
+
+
+### Todo
+workspace Incons
+screen selection

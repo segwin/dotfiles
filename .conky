@@ -32,7 +32,7 @@ cpu_avg_samples 2
 override_utf8_locale no
 
 TEXT
-${font StyleBats:size=10}K ${font Droid:bold:size=11}PROCESSORS ${hr 2}${font}
+${font Awesome:size=10}  ${font Droid:bold:size=11}PROCESSORS ${hr 2}${font}
 ${font Droid:bold:size=10}${exec cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //' | sed -e 's/ CPU @ 2.70GHz//' | head -1}$alignr@${exec cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: Intel(R) Core(TM) i7-4800MQ CPU @ //' | head -1 }
 ${font Droid:bold:size=10}Frequency: $font$alignr${freq cpu0} MHz
 ${font Droid:normal:size=8}${cpugraph cpu0}${font}
@@ -42,11 +42,11 @@ ${font Droid:bold:size=10}CPU1: $font${cpu cpu1}% ${cpubar cpu1}
 ${font Droid:bold:size=10}CPU2: $font${cpu cpu2}% ${cpubar cpu2}
 ${font Droid:bold:size=10}CPU3: $font${cpu cpu3}% ${cpubar cpu3}
 
-${font StyleBats:size=10}G ${font Droid:bold:size=11}MEMORY ${hr 2}
+${font Awesome:size=10}  ${font Droid:bold:size=11}MEMORY ${hr 2}
 ${font Droid:bold:size=10}MEMORY $font$alignc $mem / $memmax $alignr $memperc%
 $membar
 
-${font StyleBats:size=10}A ${font}${font Droid:bold:size=11}DISKS ${font}${hr 2}
+${font Awesome:size=10} ${font}${font Droid:bold:size=11}DISKS ${font}${hr 2}
 ${font Droid:bold:size=10}OS  $font
 ${fs_bar /}
 ${font Droid:bold:size=10}Used: $font$alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%

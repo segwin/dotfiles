@@ -1,0 +1,25 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.Xresources
+!.bashrc
+!.config/i3/config
+!.config/i3/conky-wrapper
+!.config/i3/conky.conf
+!.config/lxterminal/lxterminal.conf
+!.conky
+!.inputrc.vim.disabled
+!.profile
+!.screenrc
+!.subversion/config
+!.subversion/diff3wrap.sh
+!.subversion/diffwrap.sh
+!.subversion/servers
+!.vimrc
+!README.md
+!screenshot.png
+
+# ...even if they are in subdirectories
+!*/
