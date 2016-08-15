@@ -18,6 +18,7 @@
 !bin/diff3wrap.sh
 !bin/diffwrap.sh
 !bin/get_if.sh
+!bin/toggle_us_ca_keyboard.sh
 !.vimrc
 !README.md
 !screenshot.png
