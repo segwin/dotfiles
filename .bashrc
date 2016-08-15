@@ -73,4 +73,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 export EDITOR=/usr/bin/vim
-export SVN_MERGE=/home/loracett/diffwrap.sh
+export SVN_MERGE=diffwrap.sh
