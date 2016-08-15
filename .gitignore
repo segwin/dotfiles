@@ -14,9 +14,9 @@
 !.profile
 !.screenrc
 !.subversion/config
-!.subversion/diff3wrap.sh
-!.subversion/diffwrap.sh
 !.subversion/servers
+!bin/diff3wrap.sh
+!bin/diffwrap.sh
 !.vimrc
 !README.md
 !screenshot.png
