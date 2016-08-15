@@ -27,6 +27,15 @@ set $base0D #97bbf7
 set $base0E #c0b7f9
 set $base0F #fcc09e
 
+set $grey #928374
+set $black #282828
+set $wheat #ebdbb2
+set $darkseagreen #689d6a
+set $black1 #1d2021
+set $arkslategray #32302f
+set $firebrick #cc241d
+
+
 set $workspace1 "1"
 set $workspace2 "2"
 set $workspace3 "3"
@@ -159,7 +168,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
@@ -186,13 +194,16 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 #status_command i3status
 #tray_output primary
+#background #111111
+#statusline #3671F9
+#separator #0E0C0C
 bar {
     status_command $HOME/.config/i3/conky-wrapper
 	font pango:Droid Sans, Awesome 10
     colors {
-		background #111111
-		statusline #3671F9
-        separator #0E0C0C
+		background $base00
+		statusline $base02
+        separator $base0F
 
 		# color_class      border  backg.  text
 		focused_workspace  #06989A #111111 #06989A

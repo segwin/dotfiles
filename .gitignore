@@ -8,6 +8,7 @@
 !.config/i3/config
 !.config/i3/conky-wrapper
 !.config/i3/conky.conf
+!.config/i3/colors.html
 !.config/lxterminal/lxterminal.conf
 !.conky
 !.inputrc.vim.disabled
