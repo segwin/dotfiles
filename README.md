@@ -17,7 +17,17 @@ with the following packages:
 
 ### packages
 
-    usbmount vpnc firefox remmina cryptsetup
+    usbmount vpnc firefox remmina cryptsetup uzbl
+
+### Arc GTK Theme
+
+    wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+    sudo apt-key add - < Release.key
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+    sudo apt-get update && sudo apt-get install arc-theme lxappearance
+
+Then choose Arc-Darker in lxappearance.
+From http://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
 
 ### powerline font
 
