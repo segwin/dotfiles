@@ -75,7 +75,7 @@ bindsym $mod+Return exec urxvt
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id rofi -show run,window -lines 8 -font "Inconsolata 14" -width 25 -separator-style solid -opacity "95" -hide-scrollbar -bw 0
+bindsym $mod+d exec --no-startup-id rofi -show run -lines 8 -font "Inconsolata 14" -width 25 -separator-style solid -opacity "95" -hide-scrollbar -bw 0
 
 
 # change focus
@@ -89,10 +89,14 @@ bindsym $mod+Shift+$d_key move down
 bindsym $mod+Shift+$u_key move up
 bindsym $mod+Shift+$r_key move right
 
-bindsym $mod+c split h # split in horizontal orientation
-bindsym $mod+v split v # split in vertical orientation
-bindsym $mod+Shift+q kill # kill focused window
-bindsym $mod+f fullscreen toggle # enter fullscreen mode for the focused container
+# split in horizontal orientation
+bindsym $mod+c split h
+# split in vertical orientation
+bindsym $mod+v split v
+# kill focused window
+bindsym $mod+Shift+q kill
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking

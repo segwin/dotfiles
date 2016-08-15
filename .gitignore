@@ -17,6 +17,7 @@
 !.subversion/servers
 !bin/diff3wrap.sh
 !bin/diffwrap.sh
+!bin/get_if.sh
 !.vimrc
 !README.md
 !screenshot.png
