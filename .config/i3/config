@@ -44,8 +44,8 @@ set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
 set $workspace8 "8"
-set $workspace9 "9: browser"
-set $workspace10 "10: "
+set $workspace9 "9  "
+set $workspace10 "10 "
 
 
 ###########
@@ -152,7 +152,14 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Program Workspaces
 assign [class="Firefox"] $workspace9
-assign [class="Spotify"] $workspace10
+assign [class="google-chrome"] $workspace9
+#bug in spotify app, class is assigned too late
+#assign [class="Spotify"] $workspace10
+for_window [class="Spotify"] move to workspace $workspace10
+
+# Monitor Workspace
+workspace $workspace9 output VGA-0
+workspace $workspace10 output VGA-0
 
 
 
@@ -203,7 +210,7 @@ bar {
     colors {
 		background $base00
 		statusline $base02
-        separator $base0F
+        separator $base02
 
 		# color_class      border  backg.  text
 		focused_workspace  #06989A #111111 #06989A
