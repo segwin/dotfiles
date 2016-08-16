@@ -8,14 +8,9 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
+# for setting history, see in bash(1)
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
@@ -31,12 +26,9 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #colors
-if [ "x$TERM" = "xxterm" ]
-then
-    export TERM="xterm-256color"
-fi
 case "$TERM" in
 xterm*|rxvt*)
+    export TERM="xterm-256color"
     trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG
     PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\t] \u@\h\e[0m'; else echo '\e[31m[\t]\u@\h\e[0m' ; fi\`:\$PWD\n\$ "
     ;;
@@ -48,9 +40,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -71,6 +60,4 @@ alias du1='sudo du -h -d 1 . 2>/dev/null | sort -r -h -k1'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
-
 export EDITOR=/usr/bin/vim
-export SVN_MERGE=diffwrap.sh
