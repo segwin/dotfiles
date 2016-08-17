@@ -1,10 +1,14 @@
 [core]
     editor = vim
+    pager = less -F -X -R
+[color]
+    ui = auto
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = false
+    prompt = false
 [alias]
-	d = difftool
+    d = difftool
+    graph = log --decorate --oneline --graph
 [difftool "vimdiff"]
-	cmd = "vimdiff -R  ${REMOTE} -c ':se noreadonly' ${LOCAL}"
+    cmd = "vimdiff -R  ${REMOTE} -c ':se noreadonly' ${LOCAL}"
