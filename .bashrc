@@ -54,6 +54,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias du1='sudo du -h -d 1 . 2>/dev/null | sort -r -h -k1'
+alias screen='echo $SSH_CLIENT | cut -d" " -f1 >~/.screen_last_ssh_client && screen'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
