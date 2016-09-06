@@ -4,7 +4,7 @@ startup_message off
 altscreen on
 
 # Enable 256 color term
-term xterm-256color
+term screen-256color
 
 # This forces background colours to refresh.
 #  If bce is set to “on”, all characters cleared by an erase/insert/scroll/clear 
@@ -25,7 +25,7 @@ backtick 0 0 0 sh -c 'date +"%:z %Z"'
 backtick 1 1 1 sh -c 'ping -c1 -W1 $(cat ~/.screen_last_ssh_client) | sed "2q;d" | sed -n "s/.*time=\(.*\) ms.*/\1/p"'
 
 # form https://gist.github.com/joaopizani/2718397
-hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%1`|%{KY}%l%{KW}|%D %M %d %Y%{= KC} %c:%s %{= Kc}%` %{-}'
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%1`|%{KY}%l%{KW}|%D %M %d %Y %c:%s %` %{-}'
 
 #name of the window 
 caption splitonly '%?%F%{= KW}%:%{= Kd}%?   %n %t'
