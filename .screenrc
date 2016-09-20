@@ -21,11 +21,12 @@ sorendition + WK
 # Window list at the bottom.
 hardstatus alwayslastline
 
-backtick 0 0 0 sh -c 'date +"%:z %Z"'
+backtick 0 1 1 sh -c 'date'
+backtick 2 1 1 sh -c 'date -u +"%H:%M:%S %Z"'
 backtick 1 1 1 sh -c 'ping -c1 -W1 $(cat ~/.screen_last_ssh_client) | sed "2q;d" | sed -n "s/.*time=\(.*\) ms.*/\1/p"'
 
 # form https://gist.github.com/joaopizani/2718397
-hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%1`|%{KY}%l%{KW}|%D %M %d %Y %c:%s %` %{-}'
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%1`|%{KY}%l%{KW}| %` (%2`) %{-}'
 
 #name of the window 
 caption splitonly '%?%F%{= KW}%:%{= Kd}%?   %n %t'
