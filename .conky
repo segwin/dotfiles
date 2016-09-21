@@ -5,10 +5,8 @@ xftalpha 1
 update_interval 1.0
 top_cpu_separate true
 total_run_times 0
-#own_window yes
 own_window_argb_visual true
 own_window_argb_value 0
-#own_window_colour
 own_window_transparent yes
 own_window_type desktop
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
@@ -29,29 +27,28 @@ gap_y 50
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
-override_utf8_locale no
+override_utf8_locale yes
 
 TEXT
-${font Awesome:size=10}  ${font Droid:bold:size=11}PROCESSORS ${hr 2}${font}
-${font Droid:bold:size=10}${exec cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //' | sed -e 's/ CPU @ 2.70GHz//' | head -1}$alignr@${exec cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: Intel(R) Core(TM) i7-4800MQ CPU @ //' | head -1 }
+${font FontAwesome:size=10}  ${font Droid:bold:size=11}PROCESSORS ${hr 2}${font}
+${font Droid:bold:size=10}${exec cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //' | head -1}
 ${font Droid:bold:size=10}Frequency: $font$alignr${freq cpu0} MHz
-${font Droid:normal:size=8}${cpugraph cpu0}${font}
 #
 ${font Droid:bold:size=10}CPU0: $font${cpu cpu0}% ${cpubar cpu0}
 ${font Droid:bold:size=10}CPU1: $font${cpu cpu1}% ${cpubar cpu1}
 ${font Droid:bold:size=10}CPU2: $font${cpu cpu2}% ${cpubar cpu2}
 ${font Droid:bold:size=10}CPU3: $font${cpu cpu3}% ${cpubar cpu3}
 
-${font Awesome:size=10}  ${font Droid:bold:size=11}MEMORY ${hr 2}
+${font FontAwesome:size=10}  ${font Droid:bold:size=11}MEMORY ${hr 2}
 ${font Droid:bold:size=10}MEMORY $font$alignc $mem / $memmax $alignr $memperc%
 $membar
 
-${font Awesome:size=10} ${font}${font Droid:bold:size=11}DISKS ${font}${hr 2}
-${font Droid:bold:size=10}OS  $font
+${font FontAwesome:size=10} ${font}${font Droid:bold:size=11}DISKS ${font}${hr 2}
+${font Droid:bold:size=10}ROOT $font
 ${fs_bar /}
 ${font Droid:bold:size=10}Used: $font$alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
-${font Droid:bold:size=10}IO: $font$alignr${diskio sda4}
-${diskiograph sda4}
+${font Droid:bold:size=10}IO: $font$alignr${diskio sda6}
+${diskiograph sda6}
 #
 #${font Droid:bold:size=10}Data $font
 #${fs_bar /media/drive}
@@ -78,7 +75,7 @@ ${top_mem name 4}$alignc${top_mem pid 4}${alignr}${top mem 4} %
 ${top_mem name 5}$alignc${top_mem pid 5}${alignr}${top mem 5} %
 #
 ${if_existing  /proc/net/route wlp5s0}
-${font StyleBats:size=10}T ${font Droid:bold:size=11}WiFi ${hr 2}
+${font FontAwesome:size=10} ${font Droid:bold:size=11}WiFi ${hr 2}
 ${font Droid:bold:size=10}SSID${alignr}${font Droid:normal:size=10}${wireless_essid wlp5s0}
 ${font Droid:bold:size=10}IP address: $font$alignr ${addr wlp5s0}
 ${font Droid:bold:size=10}Signal Strength: $font$alignr${wireless_link_qual_perc wlp5s0} %

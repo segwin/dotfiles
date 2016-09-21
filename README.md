@@ -1,5 +1,4 @@
 # My dot files
-![alt text ](https://raw.githubusercontent.com/lpracette/linux_config/master/screenshot.png "Screenshot of my i3 setup")
 
 ## setup
 
@@ -10,14 +9,14 @@ with the following packages:
 
     i3 lxterminal rxvt-unicode-256color lightdm
     x11-xserver-utils
-    rofi compton conky
+    rofi compton conky feh
     fonts-inconsolata fonts-powerline fonts-font-awesome
 
 ## other software
 
 ### packages
 
-    usbmount vpnc firefox remmina cryptsetup uzbl
+    usbmount vpnc firefox remmina cryptsetup uzbl gnome-calculator
 
 ### Arc GTK Theme
 
@@ -48,6 +47,40 @@ From http://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-0
     sudo dpkg --install atom-amd64.deb
     sudo apt-get -f install
 
+### steam
+
+    sudo apt-get install steam
+    cd $HOME/.steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu
+    mv libstdc++.so.6 libstdc++.so.6.bak
+    cd $HOME/.steam/ubuntu12_32/steam-runtime/amd64/usr/lib/x86_64-linux-gnu
+    mv libstdc++.so.6 libstdc++.so.6.bak
+
+
+## iphone
+Communicate with iPhone using http://www.libimobiledevice.org/. The 16.04.1 repo pacakage are out of date, we need to install from source.
+
+### Install from source
+
+    sudo apt install build-essential automake libxml++2.6-dev libtool python-dev libssl-dev libfuse-dev libzip-de
+    git clone https://github.com/libimobiledevice/ideviceinstaller
+    git clone https://github.com/libimobiledevice/ifuse
+    git clone https://github.com/libimobiledevice/libimobiledevice
+    git clone https://github.com/libimobiledevice/libplist
+    git clone https://github.com/libimobiledevice/libusbmuxd
+
+### Pair device
+
+    idevicepair -u $(idevice_id -l) pair
+
+### mount iphone
+    chmod 775 /media/iphone
+    ifuse /media/iphone -u  $(idevice_id -l)
+
+### mount application data
+    ifuse --documents $(ideviceinstaller -l | awk -F, '/Mercury/ {print $1}') /media/iphone_mercury/
+
+
+
 ## credits
 ### .conky
 https://github.com/ThatJames/Conky
@@ -58,8 +91,3 @@ http://pastebin.com/h1g6FTD6
 
 ### 3wm: How To
 https://www.youtube.com/playlist?list=PL5ze0DjYv5DbCv9vNEzFmP6sU7ZmkGzcf
-
-
-### Todo
-workspace Incons
-screen selection
