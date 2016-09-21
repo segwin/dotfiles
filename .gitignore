@@ -12,6 +12,7 @@
 !.config/i3/colors.html
 !.config/lxterminal/lxterminal.conf
 !.conky
+!.conkyrc
 !.inputrc.vim.disabled
 !.profile
 !.screenrc

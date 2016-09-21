@@ -26,15 +26,8 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #colors
-case "$TERM" in
-xterm*|rxvt*)
-    export TERM="xterm-256color"
-    trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG
-    PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\t] \u@\h\e[0m'; else echo '\e[31m[\t]\u@\h\e[0m' ; fi\`:\$PWD\n\$ "
-    ;;
-*)
-    ;;
-esac
+trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG >/dev/null
+PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\t] \u@\h\e[0m'; else echo '\e[31m[\t]\u@\h\e[0m' ; fi\`:\$PWD\n\$ "
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
