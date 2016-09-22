@@ -9,7 +9,7 @@ with the following packages:
 
     i3 lxterminal rxvt-unicode-256color lightdm
     x11-xserver-utils
-    rofi compton conky feh
+    rofi compton conky feh libxml2-utils
     fonts-inconsolata fonts-powerline fonts-font-awesome
 
 ## other software
