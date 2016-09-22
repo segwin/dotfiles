@@ -25,6 +25,8 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     Plugin 'nathanaelkane/vim-indent-guides' " toggle: \-ig
     Plugin 'kshenoy/vim-signature'           " show marks beside line no
     Plugin 'morhetz/gruvbox'                 " Colorscheme
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'vim-airline/vim-airline-themes'         " nice status bar
     Plugin 'majutsushi/tagbar'               " Code navigation
     Plugin 'tpope/vim-fugitive'              " git plugin
     Plugin 'scrooloose/nerdtree'             " File explorer
@@ -53,10 +55,13 @@ inoremap jk <esc>
 " color theme
 syntax enable
 set background=dark
+
 try
-    let g:gruvbox_contrast_dark = 'hard'
-    let g:gruvbox_contrast_light = 'hard'
-    colorscheme gruvbox
+    let g:solarized_termcolors=256
+    colorscheme solarized
+"    let g:gruvbox_contrast_dark = 'hard'
+"    let g:gruvbox_contrast_light = 'hard'
+"    colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
