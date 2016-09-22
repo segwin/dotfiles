@@ -7,16 +7,16 @@
 
 with the following packages:
 
-    i3 lxterminal rxvt-unicode-256color lightdm
-    x11-xserver-utils
-    rofi compton conky feh libxml2-utils
+    i3 rxvt-unicode-256color lightdm x11-xserver-utils
+    rofi compton conky
     fonts-inconsolata fonts-powerline fonts-font-awesome
 
 ## other software
 
 ### packages
 
-    usbmount vpnc firefox remmina cryptsetup uzbl gnome-calculator
+    curl feh libxml2-utils
+    usbmount vpnc firefox remmina cryptsetup uzbl gnome-calculator ranger
 
 ### Arc GTK Theme
 

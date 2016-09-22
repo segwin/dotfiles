@@ -11,6 +11,8 @@
 !.config/i3/conky.conf
 !.config/i3/colors.html
 !.config/lxterminal/lxterminal.conf
+!.config/ranger/rc.conf
+!.config/ranger/scope.sh
 !.conky
 !.conkyrc
 !.inputrc.vim.disabled
