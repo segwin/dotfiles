@@ -28,12 +28,12 @@ with the following packages:
 Then choose Arc-Darker in lxappearance.
 From http://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-04
 
-### powerline font
 
-     cd /usr/share/fonts/truetype/
-     sudo wget https://github.com/powerline/fonts/blob/master/Inconsolata/Inconsolata%20for%20Powerline.otf?raw=1
-     mv Inconsolata\ for\ Powerline.otf\?raw=1 Inconsolata\ for\ Powerline.otf
-     fc-cache -f .
+### Powerline fonts
+
+    git clone https://github.com/powerline/fonts
+    cd fonts
+    ./install.sh
 
 ### chrome
 
@@ -54,7 +54,6 @@ From http://www.omgubuntu.co.uk/2016/06/install-latest-arc-gtk-theme-ubuntu-16-0
     mv libstdc++.so.6 libstdc++.so.6.bak
     cd $HOME/.steam/ubuntu12_32/steam-runtime/amd64/usr/lib/x86_64-linux-gnu
     mv libstdc++.so.6 libstdc++.so.6.bak
-
 
 ## iphone
 Communicate with iPhone using http://www.libimobiledevice.org/. The 16.04.1 repo pacakage are out of date, we need to install from source.
