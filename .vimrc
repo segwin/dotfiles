@@ -58,10 +58,10 @@ set background=dark
 
 try
     let g:solarized_termcolors=256
-    colorscheme solarized
-"    let g:gruvbox_contrast_dark = 'hard'
-"    let g:gruvbox_contrast_light = 'hard'
-"    colorscheme gruvbox
+    let g:gruvbox_contrast_dark = 'hard'
+    let g:gruvbox_contrast_light = 'hard'
+ "   colorscheme solarized
+    colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
