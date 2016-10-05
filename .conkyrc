@@ -50,8 +50,15 @@ ${color cyan}MEMORY: $memmax${color}
 ${color cyan}DISKS:  ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%${color}
   IO: $font$alignr${diskio}
   SWAP $font$alignc ${swap} / ${swapmax} $alignr ${swapperc}%
-
-${color cyan}NETWORK: ${addr}${color}
-  DLS: $font${downspeed} $alignr total: ${totaldown}
-  ULS: $font${upspeed} $alignr total: ${totalup}
+${if_match "${execi 600 get_if.sh}" == "wlan0"}
+${color cyan}NETWORK: ${addr wlan0}${color}
+  DLS: $font${downspeed wlan0} $alignr total: ${totaldown wlan0}
+  ULS: $font${upspeed wlan0} $alignr total: ${totalup wlan0
+$else
+    ${if_match "${execi 600 get_if.sh}" == "wlp5s0"}
+${color cyan}NETWORK: ${addr wlp5s0}${color}
+  DLS: $font${downspeed wlp5s0} $alignr total: ${totaldown wlp5s0}
+  ULS: $font${upspeed wlp5s0} $alignr total: ${totalup wlp5s0}
+    $endif
+$endif
 

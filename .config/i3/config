@@ -70,9 +70,10 @@ set $faded_orange     #af3a03
 font pango:DejaVu Sans Mono, Awesome 10
 
 # Set background as solid color
-#exec --no-startup-id xsetroot -solid "$base02"
+exec --no-startup-id xsetroot -solid $dark0_hard
 exec curl -s "https://www.bing.com$(curl -s "https://www.bing.com/HPImageArchive.aspx?n=1" | xmllint --xpath "images/image/url/text()" - | sed 's/1366x768/1920x1080/g')" | feh --bg-fill -
 exec compton --paint-on-overlay
+exec conky -c $HOME/.conky
 
 # 1 px window borders, with title
 #new_window normal 1
@@ -80,12 +81,12 @@ exec compton --paint-on-overlay
 new_window 1pixel
 
 
-# class                 border       backgr.      text    indicator child_border
-client.focused          $light4      $light4      $dark1  #2e9ef4   #285577
-client.focused_inactive $dark3       $dark3       $dark1  #484e50   #5f676a
-client.unfocused        $dark0       $dark0       $light4 #292d2e   #222222
-client.urgent           $neutral_red $bright_red  $dark0  #900000   #900000
-client.placeholder      #000000      #0c0c0c      #ffffff #000000   #0c0c0c
+# class                 border       backgr.      text    indicator     child_border
+client.focused          $light4      $light4      $dark1  $bright_green #285577
+client.focused_inactive $dark3       $dark3       $dark1  #484e50       #5f676a
+client.unfocused        $dark0       $dark0       $light4 #292d2e       #222222
+client.urgent           $neutral_red $bright_red  $dark0  #900000       #900000
+client.placeholder      #000000      #0c0c0c      #ffffff #000000       #0c0c0c
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
@@ -231,7 +232,7 @@ bar {
 
 		# color_class      border       backg.      text
 		focused_workspace  $dark4       $dark3      $light0_hard
-		active_workspace   $dark4       $dark3      $light0_hard
+		active_workspace   $dark2       $dark1      $light0_hard
 		inactive_workspace $dark0_hard  $dark0_hard $light4
 		urgent_workspace   $neutral_red $bright_red $dark0
     }
