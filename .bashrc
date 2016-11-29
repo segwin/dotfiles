@@ -27,11 +27,10 @@ shopt -s globstar
 
 #colors
 trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG >/dev/null
-PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\t] \u@\h\e[0m'; else echo '\e[31m[\t]\u@\h\e[0m' ; fi\`:\$PWD\n\$ "
+export PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\t]\e[0m'; else echo '\e[31m[\t]\e[0m' ; fi\` \[\033[38;5;37m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;214m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\]:\[$(tput sgr0)\]\[\033[38;5;241m\]\w\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\]\[\033[38;5;7m\] \[$(tput sgr0)\]"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
