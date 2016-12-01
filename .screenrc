@@ -3,12 +3,13 @@ startup_message off
 
 altscreen on
 
-# Enable 256 color term
-term screen-256color
+# if not set to xterm- the bce will set it to screen-256color-bce or screen-bce,
+# wich is not reconized (disables backspace and vim) on some systems
+term xterm-256color
 
 # This forces background colours to refresh.
-#  If bce is set to “on”, all characters cleared by an erase/insert/scroll/clear 
-#  operation will be displayed in the current background color. 
+#  If bce is set to “on”, all characters cleared by an erase/insert/scroll/clear
+#  operation will be displayed in the current background color.
 #  Otherwise the default background color is used."
 defbce "on"
 
