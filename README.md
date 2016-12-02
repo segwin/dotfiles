@@ -16,7 +16,8 @@ with the following packages:
 ### packages
 
     curl feh libxml2-utils
-    usbmount vpnc firefox remmina cryptsetup uzbl gnome-calculator ranger
+    usbmount vpnc firefox remmina cryptsetup uzbl gnome-calculator 
+    ranger zathura poppler-utils w3m
 
 ### Arc GTK Theme
 
