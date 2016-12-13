@@ -26,8 +26,20 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #colors
+COLOR_RESET="\[$(tput sgr0)\]"
+COLOR_RED="\[\033[0;31;48m\]"
+COLOR_GREEN="\[\033[0;32;48m\]"
+COLOR_CYAN="\[\033[0;36;48m\]"
+COLOR_BLUE="\[\033[1;34;48m\]"
+COLOR_GREY="\[\033[38;5;241m\]"
+COLOR_BRIGHT_RED="\[\033[1;31;48m\]"
+
+TIME_COLORED_CMD_PASS_FAIL="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_GREEN[\t]$COLOR_RESET'; else echo '$COLOR_RED[\t]$COLOR_RESET'; fi\`\]"
+
+
 trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG >/dev/null
-export PS1="\[\`if [[ \$? = "0" ]]; then echo '\e[32m[\t]\e[0m'; else echo '\e[31m[\t]\e[0m' ; fi\` \[\033[38;5;37m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;214m\]\h\[$(tput sgr0)\]\[\033[38;5;7m\]:\[$(tput sgr0)\]\[\033[38;5;241m\]\w\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\]\[\033[38;5;7m\] \[$(tput sgr0)\]"
+
+export PS1="\[$TIME_COLORED_CMD_PASS_FAIL $COLOR_CYAN\u$COLOR_RESET@$COLOR_BLUE\h$COLOR_RESET:$COLOR_GREY\w$COLOR_RESET$COLOR_BRIGHT_RED\[\$ \]$COLOR_RESET\]"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -51,6 +63,24 @@ alias screen='echo $SSH_CLIENT | cut -d" " -f1 >~/.screen_last_ssh_client && scr
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+term-color-test()
+{
+    for a in 0 1 4 5 7; do
+        echo "a=$a " 
+        for (( f=0; f<=9; f++ )) ; do
+            for (( b=0; b<=9; b++ )) ; do
+                #echo -ne "f=$f b=$b" 
+                echo -ne "\\033[${a};3${f};4${b}m"
+                echo -ne "\\\\\\\\033[${a};3${f};4${b}m"
+                echo -ne "\\033[0m "
+            done
+            echo
+        done
+        echo
+    done
+    echo
+}
 
 
 export EDITOR=/usr/bin/vim
