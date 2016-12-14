@@ -64,23 +64,20 @@ alias screen='echo $SSH_CLIENT | cut -d" " -f1 >~/.screen_last_ssh_client && scr
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-term-color-test()
-{
-    for a in 0 1 4 5 7; do
-        echo "a=$a " 
-        for (( f=0; f<=9; f++ )) ; do
-            for (( b=0; b<=9; b++ )) ; do
-                #echo -ne "f=$f b=$b" 
-                echo -ne "\\033[${a};3${f};4${b}m"
-                echo -ne "\\\\\\\\033[${a};3${f};4${b}m"
-                echo -ne "\\033[0m "
-            done
-            echo
-        done
-        echo
-    done
-    echo
-}
 
+term-256-color-test()
+{
+    for fgbg in 38 48 ; do #Foreground/Background
+        for color in {0..255} ; do #Colors
+            #Display the color
+            echo -en "\e[${fgbg};5;${color}m $(echo '   '${color}|tail -c 4)\e[0m "
+            #Display 16 colors per lines
+            if [ $((($color + 1) % 16)) == 0 ] ; then
+                echo #New line
+            fi
+        done
+        echo #New line
+    done
+}
 
 export EDITOR=/usr/bin/vim
