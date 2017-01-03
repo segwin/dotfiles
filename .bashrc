@@ -81,3 +81,8 @@ term-256-color-test()
 }
 
 export EDITOR=/usr/bin/vim
+
+if [ -e ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then 
+    ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
+fi
+
