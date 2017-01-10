@@ -83,6 +83,9 @@ set fileformats=unix,dos
 " struct member autocomple, c only, if YCM is not used
 set omnifunc=ccomplete#Complete
 
+" Show more information while completing tags.
+set showfulltag
+
 " Always show status line
 set laststatus=2
 
@@ -100,7 +103,7 @@ set directory=~/.vim/swap//,.,/tmp
 
 " automatically create folds, open all folds
 set foldmethod=syntax
-set foldlevelstart=20 
+set foldlevelstart=99
 
 " any buffer can be hidden (keeping its changes) without first writing the 
 " buffer to a file. This affects all commands and all buffers.
@@ -121,7 +124,13 @@ endif
 "  cursor moves.
 set cursorline
 
+" Let cursor move past the last char in <C-v> mode
+set virtualedit=block
 
+" Keep 10 lines above and below the cursor
+set scrolloff=10
+
+" Gvim options
 if has("gui_running")
     try
         if has('gui_win32')
@@ -167,7 +176,7 @@ endif
 " vim-airline
 " ------------
 "  " don't count trailing whitespace since it lags in huge files
-let g:airline#extensions#whitespace#enabled = 0
+"let g:airline#extensions#whitespace#enabled = 0
 "  " put a buffer list at the top
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
