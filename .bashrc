@@ -27,19 +27,16 @@ shopt -s globstar
 
 #colors
 COLOR_RESET="\[$(tput sgr0)\]"
-COLOR_RED="\[\033[0;31;48m\]"
-COLOR_GREEN="\[\033[0;32;48m\]"
-COLOR_CYAN="\[\033[0;36;48m\]"
-COLOR_BLUE="\[\033[1;34;48m\]"
-COLOR_GREY="\[\033[38;5;241m\]"
-COLOR_BRIGHT_RED="\[\033[1;31;48m\]"
-
-TIME_COLORED_CMD_PASS_FAIL="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_GREEN[\t]$COLOR_RESET'; else echo '$COLOR_RED[\t]$COLOR_RESET'; fi\`\]"
-
-
-trap 'echo -ne "\e]0;"; echo -n "bash $PWD\$ $BASH_COMMAND"; echo -ne "\007"' DEBUG >/dev/null
-
-export PS1="\[$TIME_COLORED_CMD_PASS_FAIL $COLOR_CYAN\u$COLOR_RESET@$COLOR_BLUE\h$COLOR_RESET:$COLOR_GREY\w$COLOR_RESET$COLOR_BRIGHT_RED\[\$ \]$COLOR_RESET\]"
+COLOR_SUCCESS="\[\033[38;5;106m\]"
+COLOR_FAILURE="\[\033[38;5;124m\]"
+COLOR_FG="\[\033[38;5;246m\]"
+COLOR_SEP="\[\033[38;5;236m\]"
+COLOR_FG2="\[\033[38;5;239m\]"
+COLOR_END="\[\033[38;5;234m\]"
+COLOR_BG1="\[\033[48;5;236m\]"
+COLOR_BG2="\[\033[48;5;234m\]"
+TIME_COLORED_CMD_PASS_FAIL="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_SUCCESS[\t]$COLOR_RESET'; else echo '$COLOR_FAILURE[\t]$COLOR_RESET'; fi\`\]"
+export PS1="\[$COLOR_BG1$TIME_COLORED_CMD_PASS_FAIL$COLOR_BG1 $COLOR_FG\u$COLOR_SEP$COLOR_BG2 $COLOR_FG2\w$COLOR_RESET$COLOR_END\[ \]$COLOR_RESET\]"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
