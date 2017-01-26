@@ -26,9 +26,10 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #colors
+COLOR_BOLD="\[$(tput bold)\]"
 COLOR_RESET="\[$(tput sgr0)\]"
-COLOR_SUCCESS="\[\033[38;5;106m\]"
-COLOR_FAILURE="\[\033[38;5;124m\]"
+COLOR_SUCCESS="\[\033[38;5;2m\]"
+COLOR_FAILURE="\[\033[38;5;1m\]"
 COLOR_FG="\[\033[38;5;238m\]"
 COLOR_FG1="\[\033[38;5;246m\]"
 COLOR_SEP="\[\033[38;5;236m\]"
@@ -37,7 +38,7 @@ COLOR_END="\[\033[38;5;234m\]"
 COLOR_BG1="\[\033[48;5;238m\]"
 COLOR_BG2="\[\033[48;5;236m\]"
 COLOR_BG3="\[\033[48;5;234m\]"
-TIME_COLORED_CMD_PASS_FAIL="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_SUCCESS[\t]$COLOR_RESET'; else echo '$COLOR_FAILURE[\t]$COLOR_RESET'; fi\`\]"
+TIME_COLORED_CMD_PASS_FAIL="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_BOLD$COLOR_SUCCESS[\t]$COLOR_RESET'; else echo '$COLOR_BOLD$COLOR_FAILURE[\t]$COLOR_RESET'; fi\`\]"
 export PS1="\[$COLOR_BG1$TIME_COLORED_CMD_PASS_FAIL$COLOR_BG2$COLOR_FG$COLOR_FG1\u$COLOR_SEP$COLOR_BG3$COLOR_FG2\w$COLOR_RESET$COLOR_END$COLOR_RESET\]"
 
 # enable color support of ls and also add handy aliases
