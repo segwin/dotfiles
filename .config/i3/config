@@ -100,8 +100,8 @@ bindsym XF86Calculator exec "gnome-calculator"
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 for_window [class="Yad"] floating enable
+for_window [class="Screenkey"] floating enable
 
-# https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
@@ -150,9 +150,6 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -222,10 +219,11 @@ bindsym $mod+r mode "resize"
 bar {
     position top
     status_command $HOME/.config/i3/conky-wrapper
+    separator_symbol ""
     colors {
 		background $dark2
 		statusline $dark2
-        separator  $dark4
+        separator  $light4
 
 		# color_class      border       backg.      text
 		focused_workspace  $dark4       $dark3      $light0_hard
