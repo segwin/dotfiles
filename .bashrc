@@ -26,20 +26,37 @@ shopt -s globstar
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 #colors
-COLOR_BOLD="\[$(tput bold)\]"
 COLOR_RESET="\[$(tput sgr0)\]"
-COLOR_SUCCESS="\[\033[38;5;2m\]"
-COLOR_FAILURE="\[\033[38;5;1m\]"
-COLOR_FG="\[\033[38;5;238m\]"
-COLOR_FG1="\[\033[38;5;246m\]"
-COLOR_SEP="\[\033[38;5;236m\]"
-COLOR_FG2="\[\033[38;5;239m\]"
-COLOR_END="\[\033[38;5;234m\]"
-COLOR_BG1="\[\033[48;5;238m\]"
-COLOR_BG2="\[\033[48;5;236m\]"
-COLOR_BG3="\[\033[48;5;234m\]"
-TIME_COLORED_CMD_PASS_FAIL="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_BOLD$COLOR_SUCCESS[\t]$COLOR_RESET'; else echo '$COLOR_BOLD$COLOR_FAILURE[\t]$COLOR_RESET'; fi\`\]"
-export PS1="\[$COLOR_BG1$TIME_COLORED_CMD_PASS_FAIL$COLOR_BG2$COLOR_FG$COLOR_FG1\u$COLOR_SEP$COLOR_BG3$COLOR_FG2\w$COLOR_RESET$COLOR_END$COLOR_RESET\]"
+COLOR_SUCCESS="\[\033[38;5;106m\]"
+COLOR_FAILURE="\[\033[38;5;196m\]"
+
+COLOR_BG1_F="\[\033[38;5;237m\]"
+COLOR_BG1_B="\[\033[48;5;237m\]"
+
+COLOR_BG2_F="\[\033[38;5;235m\]"
+COLOR_BG2_B="\[\033[48;5;235m\]"
+COLOR_FG2_F="\[\033[38;5;246m\]"
+
+COLOR_BG3_F="\[\033[38;5;233m\]"
+COLOR_BG3_B="\[\033[48;5;233m\]"
+COLOR_FG3_F="\[\033[38;5;243m\]"
+
+COLOR_BG4_F="\[\033[38;5;232m\]"
+COLOR_BG4_B="\[\033[48;5;232m\]"
+COLOR_FG4_F="\[\033[38;5;238m\]"
+
+PROMPT_TIME="\[\
+$COLOR_FG1_F$COLOR_BG1_B\
+\`if [[ \$? = "0" ]]; then \
+    echo '$COLOR_SUCCESS[\t]'; \
+else \
+    echo '$COLOR_FAILURE[\t]'; \
+fi\`\
+$COLOR_RESET$COLOR_BG2_B$COLOR_BG1_F\]"
+PROMPT_USER="\[$COLOR_FG2_F$COLOR_BG2_B\u$COLOR_BG3_B$COLOR_BG2_F\]"
+PROMPT_HOST="\[$COLOR_FG3_F$COLOR_BG3_B\h$COLOR_BG4_B$COLOR_BG3_F\]"
+PROMPT_PATH="\[$COLOR_FG4_F$COLOR_BG4_B\w$COLOR_RESET$COLOR_BG4_F\]"
+export PS1="\[$PROMPT_TIME$PROMPT_USER$PROMPT_HOST$PROMPT_PATH$COLOR_RESET\]"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -50,7 +67,6 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
