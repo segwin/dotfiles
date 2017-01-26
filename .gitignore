@@ -21,6 +21,7 @@
 !.subversion/config
 !.subversion/servers
 !.tmux.conf
+!bin/ping_latency.sh
 !bin/diff3wrap.sh
 !bin/diffwrap.sh
 !bin/get_if.sh
