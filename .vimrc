@@ -33,7 +33,8 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     Plugin 'Xuyuanp/nerdtree-git-plugin'     " git status symbole in NERDTree
     Plugin 'hari-rangarajan/CCTree'          " Call graph, uses cssope
     Plugin 'vim-scripts/DrawIt'              " draw boxes and arrows
-    "Plugin 'Valloric/YouCompleteMe'         " Code completion requires clang
+    Plugin 'christoomey/vim-tmux-navigator'  " navigate seamlessly between vim and tmux splits
+    Plugin 'Valloric/YouCompleteMe'         " Code completion requires clang
     call vundle#end()
 endif
 filetype plugin indent on     " and turn it back on!
