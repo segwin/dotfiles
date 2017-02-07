@@ -12,5 +12,11 @@
     graph = log --decorate --oneline --graph
 [difftool "vimdiff"]
     cmd = "vimdiff -R  ${REMOTE} -c ':se noreadonly' ${LOCAL}"
+[mergetool "vimdiff3"]
+      cmd = vim -u ~/.vimrc -f -d -c \"wincmd J\" \"$MERGED\" -R \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [push]
 	default = simple
+[mergetool]
+	prompt = false
+[merge]
+	tool = vimdiff

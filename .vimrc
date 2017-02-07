@@ -207,3 +207,29 @@ let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 
+function! GetVisualSelection() " from http://stackoverflow.com/a/6271254
+    let [lnum1, col1] = getpos("'<")[1:2]
+    let [lnum2, col2] = getpos("'>")[1:2]
+    let lines = getline(lnum1, lnum2)
+    let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ?  1 : 2)]
+    let lines[0] = lines[0][col1 - 1:]
+    return join(lines, "\n")
+endfunction
+function! EncodeUrl(url) " Add characters as needed
+    let encoded=substitute(a:url, " ", "\\\\%20", "g")
+    return encoded
+endfunction
+function! SearchGoogleW3m(str)
+    let l:sCmd="w3m -M ".EncodeUrl("www.google.com/search?q=".a:str)
+    execute "!" . l:sCmd
+endfunction
+vnoremap <leader>g :call SearchGoogleW3m(GetVisualSelection())<CR>
+
+
+if !empty(glob("~/.vim/bundle/tagbar/plugin/tagbar.vim"))
+    noremap <leader>t :make TEST=<C-R>=substitute(tagbar#currenttag("%s",""),"()","","")<CR><CR>
+else
+    noremap <leader>t :make TEST=<C-R>=expand("<cword>")<CR><CR>
+endif
+
+
