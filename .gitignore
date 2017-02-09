@@ -29,5 +29,6 @@
 !bin/toggle_us_ca_keyboard.sh
 !bin/weather.sh
 !.vimrc
+!.zshrc
 !README.md
 !screenshot.png
