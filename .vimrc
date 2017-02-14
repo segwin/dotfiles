@@ -34,7 +34,7 @@ if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
     Plugin 'hari-rangarajan/CCTree'          " Call graph, uses cssope
     Plugin 'vim-scripts/DrawIt'              " draw boxes and arrows
     Plugin 'christoomey/vim-tmux-navigator'  " navigate seamlessly between vim and tmux splits
-    Plugin 'Valloric/YouCompleteMe'         " Code completion requires clang
+    Plugin 'Valloric/YouCompleteMe'          " Code completion requires clang
     call vundle#end()
 endif
 filetype plugin indent on     " and turn it back on!
@@ -216,19 +216,45 @@ function! GetVisualSelection() " from http://stackoverflow.com/a/6271254
     return join(lines, "\n")
 endfunction
 function! EncodeUrl(url) " Add characters as needed
-    let encoded=substitute(a:url, " ", "\\\\%20", "g")
+    let l:encoded=substitute(a:url,     " ",  "\\\\%20", "g") " Space
+    let l:encoded=substitute(l:encoded, "&",  "\\\\%26", "g") " Ampersand 
+    let l:encoded=substitute(l:encoded, "+",  "\\\\%2B", "g") " Plus 
+    let l:encoded=substitute(l:encoded, ",",  "\\\\%2C", "g") " Comma 
+    let l:encoded=substitute(l:encoded, "/",  "\\\\%2F", "g") " Forward slash/Virgule 
+    let l:encoded=substitute(l:encoded, ":",  "\\\\%3A", "g") " Colon 
+    let l:encoded=substitute(l:encoded, ";",  "\\\\%3B", "g") " Semi-colon 
+    let l:encoded=substitute(l:encoded, "=",  "\\\\%3D", "g") " Equals 
+    let l:encoded=substitute(l:encoded, "?",  "\\\\%3F", "g") " Question mark 
+    let l:encoded=substitute(l:encoded, "@",  "\\\\%40", "g") " 'At' symbol 
+    let l:encoded=substitute(l:encoded, "?",  "\\\\%22", "g") " Quotation marks
+    let l:encoded=substitute(l:encoded, "<",  "\\\\%3C", "g") " 'Less Than' symbol
+    let l:encoded=substitute(l:encoded, ">",  "\\\\%3E", "g") " 'Greater Than' symbol
+    let l:encoded=substitute(l:encoded, "{",  "\\\\%7B", "g") " Left Curly Brace 
+    let l:encoded=substitute(l:encoded, "}",  "\\\\%7D", "g") " Right Curly Brace 
+    let l:encoded=substitute(l:encoded, "|",  "\\\\%7C", "g") " Vertical Bar/Pipe 
+    let l:encoded=substitute(l:encoded, "~",  "\\\\%7E", "g") " Tilde 
+    let l:encoded=substitute(l:encoded, "[",  "\\\\%5B", "g") " Left Square Bracket 
+    let l:encoded=substitute(l:encoded, "]",  "\\\\%5D", "g") " Right Square Bracket 
+    let l:encoded=substitute(l:encoded, "`",  "\\\\%60", "g") " Grave Accent 
+    let l:encoded=substitute(l:encoded, "#",  "\\\\%23", "g") " 'Pound' character
+    " let l:encoded=substitute(a:url, %,  \\\\%25, g)     " Percent character
+    " let l:encoded=substitute(l:encoded, \\, \\\\%5C, g) " Backslash 
+    " let l:encoded=substitute(l:encoded, $,  \\\\%24, g) " Dollar 
+    " let l:encoded=substitute(l:encoded, ^,  \\\\%5E, g) " Caret 
     return encoded
 endfunction
-function! SearchGoogleW3m(str)
-    let l:sCmd="w3m -M ".EncodeUrl("www.google.com/search?q=".a:str)
+function! SearchGoogleW3m(str,extra)
+    let l:sCmd="w3m www.google.com/search?q=".EncodeUrl(a:str).a:extra
+    "echom l:sCmd
     execute "!" . l:sCmd
 endfunction
-vnoremap <leader>g :call SearchGoogleW3m(GetVisualSelection())<CR>
+vnoremap <leader>g :call SearchGoogleW3m(GetVisualSelection(), "")<CR>
 
 
 if !empty(glob("~/.vim/bundle/tagbar/plugin/tagbar.vim"))
     noremap <leader>t :make TEST=<C-R>=substitute(tagbar#currenttag("%s",""),"()","","")<CR><CR>
 else
+    echom "Using <cword> for <leader>t"
     noremap <leader>t :make TEST=<C-R>=expand("<cword>")<CR><CR>
 endif
 
