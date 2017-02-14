@@ -10,6 +10,7 @@
 [alias]
     d = difftool
     graph = log --decorate --oneline --graph
+    clean-branches = git checkout master && git pull && git remote prune origin && git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches
 [difftool "vimdiff"]
     cmd = "vimdiff -R  ${REMOTE} -c ':se noreadonly' ${LOCAL}"
 [mergetool "vimdiff3"]
