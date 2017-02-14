@@ -13,9 +13,9 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-
+ZLE_RPROMPT_INDENT=0
+RPROMPT=%F{246}%K{246}%F{234}%D{%H:%M:%S}%f%k
 PROMPT=%K{246}%F{234}%n%F{246}%K{239}%F{246}%m%F{239}%K{237}%F{246}%~%F{237}%k%f
-RPROMPT='%F{246}%K{246}%F{234}%D{%H:%M:%S}%f%k'
 
 
 # colored GCC warnings and errors
@@ -34,4 +34,8 @@ alias tmux='echo $SSH_CLIENT | cut -d" " -f1 >~/.tmux_last_ssh_client && tmux'
 alias p='ps aux|awk '"'"'$11!~/^\[/{print $0}'"'"
 
 export EDITOR=/usr/bin/vim
+
+
+#share history between terms
+setopt share_history
 
