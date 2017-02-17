@@ -71,7 +71,10 @@ font pango:DejaVu Sans Mono, FontAwesome 10
 
 # Set background as solid color
 exec --no-startup-id xsetroot -solid $dark0_hard
-exec curl -s "https://www.bing.com$(curl -s "https://www.bing.com/HPImageArchive.aspx?n=1" | xmllint --xpath "images/image/url/text()" - | sed 's/1366x768/1920x1080/g')" | feh --bg-fill -
+
+#exec curl -s "https://www.bing.com$(curl -s "https://www.bing.com/HPImageArchive.aspx?n=1" | xmllint --xpath "images/image/url/text()" - | sed 's/1366x768/1920x1080/g')" | feh --bg-fill -
+exec set_wallpaper.sh
+
 exec compton --paint-on-overlay
 exec conky -c $HOME/.conky
 

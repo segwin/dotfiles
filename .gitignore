@@ -28,6 +28,7 @@
 !bin/get_if.sh
 !bin/toggle_us_ca_keyboard.sh
 !bin/weather.sh
+!bin/set_wallpaper.sh
 !.vimrc
 !.zshrc
 !README.md
