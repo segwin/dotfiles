@@ -67,6 +67,16 @@ catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
 
+if &term =~ '256color'
+    " disable Background Color Erase (BCE)
+    set t_ut=
+endif
+
+" Indicates a fast terminal connection.  More characters will be sent to the
+" screen for redrawing
+set ttyfast
+
+
 " Identation
 set expandtab
 set tabstop=4
@@ -244,7 +254,7 @@ function! EncodeUrl(url) " Add characters as needed
     return encoded
 endfunction
 function! SearchGoogleW3m(str,extra)
-    let l:sCmd="w3m www.google.com/search?q=".EncodeUrl(a:str).a:extra
+    let l:sCmd="w3m www.google.com/search\?q=".EncodeUrl(a:str).a:extra
     "echom l:sCmd
     execute "!" . l:sCmd
 endfunction
