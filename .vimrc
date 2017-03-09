@@ -47,21 +47,40 @@ filetype plugin indent on     " and turn it back on!
 " Basic config: line numbers, no line wrap, highlight incremental search,
 " remap escape key. Quick config if no .vimrc:
 " colo desert |set nu|set nowrap|set hls|set is|inoremap jk <esc>
+" With 4 space tabs:
+" colo desert |set nu|set et|set ts=4|set sw=4|set ci|set ai|set nowrap|set hls|set is|inoremap 
 set nu
 set nowrap
 set hlsearch
 set incsearch
 inoremap jk <esc> 
 
+" Identation
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set cindent
+set autoindent
+filetype indent on
+autocmd FileType make set noexpandtab
+autocmd BufRead,BufNewFile   *.html,*.php setl sw=2 sts=2 et foldmethod=indent
+autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
+
 " color theme
 syntax enable
 set background=dark
 
+let g:solarized_termcolors=256
+let g:solarized_contrast='high'
+
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'hard'
+
 try
-    let g:solarized_termcolors=256
-    let g:gruvbox_contrast_dark = 'hard'
-    let g:gruvbox_contrast_light = 'hard'
- "   colorscheme solarized
+    "colorscheme solarized
+    "set background=dark
+    "let g:airline_theme='solarized' "
+
     colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
@@ -75,18 +94,6 @@ endif
 " Indicates a fast terminal connection.  More characters will be sent to the
 " screen for redrawing
 set ttyfast
-
-
-" Identation
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set cindent
-set autoindent
-filetype indent on
-autocmd FileType make set noexpandtab
-autocmd BufRead,BufNewFile   *.html,*.php setl sw=2 sts=2 et foldmethod=indent
-autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
 
 " End-of-line options
 set fileformats=unix,dos
@@ -126,9 +133,9 @@ set hidden
 set wildmode=longest,list,full
 set wildmenu
 
-" Ignore whitespace in vimdiff
+" Configs for vimdiff
 if &diff
-    set diffopt+=iwhite
+    set diffopt+=iwhite             " Ignore whitespace in vimdiff
 endif
 
 "  highlight the current line in every window and update the highlight as the
