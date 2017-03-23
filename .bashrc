@@ -51,11 +51,11 @@ COLOR_FG1_FAILURE_DARK="\033[38;5;88m"
 
 #PS1="\[\`if [[ \$? = "0" ]]; then echo '$COLOR_FG1_SUCCESS'; else echo '$COLOR_FG1_FAILURE'; fi\`\]"
 PS1="\[$COLOR_FG1\]"
-PS1+="\[$COLOR_BG1_B\]\t\[$COLOR_BG2_B$COLOR_BG1_F\]"
-PS1+="\[$COLOR_FG2_F$COLOR_BG2_B\]\u\[$COLOR_BG3_B$COLOR_BG2_F\]"
-PS1+="\[$COLOR_FG3_F$COLOR_BG3_B\]\h\[$COLOR_BG4_B$COLOR_BG3_F\]"
-PS1+="\[$COLOR_FG4_F$COLOR_BG4_B\]\w\[$COLOR_RESET$COLOR_BG4_F\]"
-PS1+="\[\`if ! [[ \$? = "0" ]]; then echo '$COLOR_FG1_FAILURE_DARK'; fi\`\]"
+PS1+="\[$COLOR_BG1_B\]\u\[$COLOR_BG2_B$COLOR_BG1_F\]"
+PS1+="\[$COLOR_FG2_F$COLOR_BG2_B\]\h\[$COLOR_BG3_B$COLOR_BG2_F\]"
+PS1+="\[$COLOR_FG3_F$COLOR_BG3_B\]\w\[$COLOR_BG4_B$COLOR_BG3_F\]"
+PS1+="\[$COLOR_FG4_F$COLOR_BG4_B\]\t\[$COLOR_RESET$COLOR_BG4_F\]"
+PS1+="\[$COLOR_BG4_B\]\[\`if [[ \$? = "0" ]]; then echo '${COLOR_FG1_SUCCESS} ✔'; else echo '${COLOR_FG1_FAILURE} ✘'; fi\`\]\[$COLOR_RESET$COLOR_BG4_F\]"
 PS1+="\[$COLOR_RESET\]"
 export PS1
 
@@ -104,4 +104,7 @@ export EDITOR=/usr/bin/vim
 if [ -e ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then 
     ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
+
+# if command isn't found, suggests a likely package to install
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 

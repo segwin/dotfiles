@@ -11,6 +11,9 @@ bindkey -e
 
 setopt share_history
 
+# if command isn't found, suggests a likely package to install
+[[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 ZLE_RPROMPT_INDENT=0
 RPROMPT=%F{246}%K{246}%(?:%F{46}✔ :%F{196}✘ )%F{234}%D{%H:%M:%S}%f%k
