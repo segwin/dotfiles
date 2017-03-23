@@ -52,3 +52,9 @@ function term-256-color-test()
 if [ -e ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then 
     ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
