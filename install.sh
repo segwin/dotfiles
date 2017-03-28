@@ -1,7 +1,7 @@
 #!/bin/bash
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
-DOTFILES_TO_INSTALL="bin .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh"
+DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh"
 
 
 function confirm()
@@ -22,7 +22,7 @@ for f in $DOTFILES_TO_INSTALL; do
     else
         if [ -f $HOME/$f ]; then
             if confirm "Overwrite $HOME/$f?"; then
-                rm $HOME/$f
+                rm -rf $HOME/$f
                 ln -s $DOTFILES/$f $HOME/$f
                 echo $HOME/$f installed!
             fi
