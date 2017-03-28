@@ -48,7 +48,7 @@ filetype plugin indent on     " and turn it back on!
 " remap escape key. Quick config if no .vimrc:
 " colo desert |set nu|set nowrap|set hls|set is|inoremap jk <esc>
 " With 4 space tabs:
-" colo desert |set nu|set et|set ts=4|set sw=4|set ci|set ai|set nowrap|set hls|set is|inoremap 
+" colo desert |set nu|set et|set ts=4|set sw=4|set ci|set ai|set nowrap|set hls|set is|inoremap jk <esc>
 set nu
 set nowrap
 set hlsearch
@@ -186,6 +186,17 @@ if has('cscope')
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
+
+" Toggle line numbers and special characters with <F3>
+noremap <F3> :set list!\|set nu!<CR>
+inoremap <F3> <C-o>:set list!\|set nu!<CR>
+
+" Toggle paste mode
+noremap <F2> :set paste!<CR>
+inoremap <F2> <C-o>:set paste!<CR>
+
+
+
 
 " ====================================
 " Plugin Configuration
