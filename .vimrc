@@ -3,41 +3,34 @@ set nocompatible               " be iMproved
 " ====================================
 " First time load, install plugins
 " ====================================
-if !isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
+if empty(glob("~/.vim/autoload/plug.vim"))
     if executable('git')
-        !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-        !vim +PluginInstall +qall && mkdir -p ~/.vim/undo && mkdir -p ~/.vim/swap
+        execute('!mkdir -p ~/.vim/{autoload,undo,swap} && curl -sfLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim && vim +PlugInstall +qall')
     else
-        echom "Please install git to allow plugin configuration through Vundle"
+        echom "Please install git to allow plugin configuration through vim-plug"
     endif
 endif
 
 " ====================================
-" Plugin Management with Vundle
+" Plugin Management with vim-plug
 " ====================================
-filetype off                   " must be off before Vundle has run
-if isdirectory(expand("~/.vim/bundle/Vundle.vim/.git"))
-    set runtimepath+=~/.vim/bundle/Vundle.vim
-    " :PluginInstall, PluginUpdate, PluginClean
-    call vundle#begin()
-    Plugin 'gmarik/Vundle.vim'               " manage Vundle wiht Vundle
-    Plugin 'vim-airline/vim-airline'         " nice status bar
-    Plugin 'nathanaelkane/vim-indent-guides' " toggle: \-ig
-    Plugin 'kshenoy/vim-signature'           " show marks beside line no
-    Plugin 'morhetz/gruvbox'                 " Colorscheme
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'vim-airline/vim-airline-themes'         " nice status bar
-    Plugin 'majutsushi/tagbar'               " Code navigation
-    Plugin 'tpope/vim-fugitive'              " git plugin
-    Plugin 'scrooloose/nerdtree'             " File explorer
-    Plugin 'Xuyuanp/nerdtree-git-plugin'     " git status symbole in NERDTree
-    Plugin 'hari-rangarajan/CCTree'          " Call graph, uses cssope
-    Plugin 'vim-scripts/DrawIt'              " draw boxes and arrows
-    Plugin 'christoomey/vim-tmux-navigator'  " navigate seamlessly between vim and tmux splits
-    Plugin 'Valloric/YouCompleteMe'          " Code completion requires clang
-    call vundle#end()
-endif
-filetype plugin indent on     " and turn it back on!
+call plug#begin()
+Plug 'vim-airline/vim-airline'          " nice status bar
+Plug 'vim-airline/vim-airline-themes'   " nice status bar colors
+Plug 'nathanaelkane/vim-indent-guides'  " toggle: \-ig
+Plug 'kshenoy/vim-signature'            " show marks beside line no
+Plug 'morhetz/gruvbox'                  " Colorscheme
+Plug 'altercation/vim-colors-solarized' " Colorscheme
+Plug 'tpope/vim-fugitive'               " git plugin
+Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
+Plug 'majutsushi/tagbar'                " Code navigation
+Plug 'Valloric/YouCompleteMe'           " Code completion
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
+Plug 'scrooloose/nerdtree',         { 'on': 'NERDTreeToggle' }    " File explorer
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }    " git status symbole in NERDTree
+Plug 'hari-rangarajan/CCTree',      { 'on': 'CCTreeLoadDB' }      " Call graph, uses cssope
+Plug 'vim-scripts/DrawIt',          { 'on': 'DrawItStart' }       " draw boxes and arrows
+call plug#end()
 
 
 " ====================================
@@ -279,7 +272,7 @@ endfunction
 vnoremap <leader>g :call SearchGoogleW3m(GetVisualSelection(), "")<CR>
 
 
-if !empty(glob("~/.vim/bundle/tagbar/plugin/tagbar.vim"))
+if !empty(glob("~/.vim/plugged/tagbar/plugin/tagbar.vim"))
     noremap <leader>t :make TEST=<C-R>=substitute(tagbar#currenttag("%s",""),"()","","")<CR><CR>
 else
     echom "Using <cword> for <leader>t"

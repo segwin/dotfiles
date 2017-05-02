@@ -17,7 +17,7 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 ZLE_RPROMPT_INDENT=0
 RPROMPT=%F{246}%K{246}%F{234}%D{%H:%M:%S}%f%k
-PROMPT=%K{246}%F{234}%n%F{246}%K{239}%F{246}%m%F{239}%K{237}%F{246}%~%(?:%F{46} ✔:%F{196} ✘)%k%F{237}%f
+PROMPT=%K{246}%F{234}%n%F{246}%K{239}%F{246}%m%F{239}%K{237}%F{246}%~%(?:%F{46}✔:%F{196}✘)%k%F{237}%f%G
 
 
 # colored GCC warnings and errors
@@ -61,3 +61,5 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
