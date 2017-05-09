@@ -1,3 +1,5 @@
+export LC_ALL="en_US.UTF-8"
+
 zstyle ':completion:*' menu select
 zstyle :compinstall filename '/home/loracett/.zshrc'
 
@@ -17,7 +19,7 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 ZLE_RPROMPT_INDENT=0
 RPROMPT=%F{246}%K{246}%F{234}%D{%H:%M:%S}%f%k
-PROMPT=%K{246}%F{234}%n%F{246}%K{239}%F{246}%m%F{239}%K{237}%F{246}%~%(?:%F{46}✔:%F{196}✘)%k%F{237}%f%G
+PROMPT=%{%K{246}%F{234}%}%n%{%F{246}%K{239}%}%{%F{246}%}%m%{%F{239}%K{237}%}%{%F{246}%}%~%{%(?:%F{46}%} ✔%{:%F{196}%} ✘%{)%k%F{237}%}%{%f%}
 
 
 # colored GCC warnings and errors
@@ -34,6 +36,7 @@ alias du1='sudo du -h -d 1 . 2>/dev/null | sort -r -h -k1'
 alias screen='echo $SSH_CLIENT | cut -d" " -f1 >~/.screen_last_ssh_client && screen'
 alias tmux='echo $SSH_CLIENT | cut -d" " -f1 >~/.tmux_last_ssh_client && tmux'
 alias p='ps aux|awk '"'"'$11!~/^\[/{print $0}'"'"
+alias vimf='vim $(fzf)'
 
 export EDITOR=/usr/bin/vim
 
@@ -62,4 +65,18 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f ~/.fzf.zsh ] ; then
+    source ~/.fzf.zsh
+    export FZF_COMPLETION_TRIGGER=''
+    bindkey '^T' fzf-completion
+    bindkey '^I' $fzf_default_completion
+fi
+
+
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Emacs style
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
