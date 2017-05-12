@@ -40,6 +40,10 @@ alias vimf='vim $(fzf)'
 
 export EDITOR=/usr/bin/vim
 
+TERM=xterm-256color
+
+eval `dircolors dircolors.256dark`
+
 function term-256-color-test()
 {
     for fgbg in 38 48 ; do #Foreground/Background
