@@ -102,7 +102,7 @@ set laststatus=2
 
 " Show invisible chars (eol, tabs, trailing space)
 set list
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:$,tab:▸-,trail:·,extends:↷,precedes:↶,nbsp:•
 
 " Use an undo file and set a directory to store the undo history
 set undofile
@@ -265,7 +265,7 @@ function! EncodeUrl(url) " Add characters as needed
     return encoded
 endfunction
 function! SearchGoogleW3m(str,extra)
-    let l:sCmd="w3m www.google.com/search\?q=".EncodeUrl(a:str).a:extra
+    let l:sCmd="w3m -M www.google.com/search\\?q=".EncodeUrl(a:str).a:extra
     "echom l:sCmd
     execute "!" . l:sCmd
 endfunction
