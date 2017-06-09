@@ -1,7 +1,7 @@
 #!/bin/bash
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
-DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark"
+DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc"
 
 
 function confirm()
