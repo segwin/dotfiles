@@ -70,11 +70,11 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
 
 try
-    colorscheme solarized
-    set background=dark
-    let g:airline_theme='solarized' "
+    "colorscheme solarized
+    "set background=dark
+    "let g:airline_theme='solarized' "
 
-    "colorscheme gruvbox
+    colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
