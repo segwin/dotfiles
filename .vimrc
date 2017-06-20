@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'               " git plugin
 Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
 Plug 'majutsushi/tagbar'                " Code navigation
 Plug 'Valloric/YouCompleteMe'           " Code completion
+Plug 'python-mode/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
 Plug 'scrooloose/nerdtree',         { 'on': 'NERDTreeToggle' }    " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }    " git status symbole in NERDTree
