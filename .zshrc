@@ -61,12 +61,31 @@ function term-256-color-test()
     done
 }
 
+function countdown(){
+    date1=$((`date +%s` + $1)); 
+    while [ "$date1" -ge `date +%s` ]; do 
+        echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+        sleep 0.1
+    done
+}
+function stopwatch(){
+    date1=`date +%s`; 
+    while true; do 
+        echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
+        sleep 0.1
+    done
+}
+
 if [ -e ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then 
     ~/.vim/bundle/gruvbox/gruvbox_256palette.sh
 fi
 
 if [ -e ~/.pythonrc ]; then 
     export PYTHONSTARTUP=~/.pythonrc
+    export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PYTHONDONTWRITEBYTECODE=1 # don't write .pyc files to disk
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # set PATH so it includes user's private bin if it exists
