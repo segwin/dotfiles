@@ -196,6 +196,12 @@ inoremap <F2> <C-o>:set paste!<CR>
 " Plugin Configuration
 " ====================================
 
+" python-mode
+" -----------
+let g:pymode_options_max_line_length=120
+autocmd FileType python set colorcolumn=120
+ 
+
 " vim-airline
 " ------------
 "  " don't count trailing whitespace since it lags in huge files
