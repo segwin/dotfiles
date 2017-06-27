@@ -1,17 +1,29 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/loracett/scm/dotfiles/oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
 export LC_ALL="en_US.UTF-8"
-
-zstyle ':completion:*' menu select
-zstyle :compinstall filename '/home/loracett/.zshrc'
-
-autoload -Uz compinit
-compinit
-
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-
-setopt share_history
 
 # if command isn't found, suggests a likely package to install
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
@@ -74,6 +86,11 @@ function stopwatch(){
         echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; 
         sleep 0.1
     done
+}
+
+# install spell to get /usr/share/dict/words
+function randomWord() {
+    shuf -n${1:-3} /usr/share/dict/words | sed "s/'//" | sed "s/.*/\u&/" | paste -s -d '' -
 }
 
 if [ -e ~/.vim/bundle/gruvbox/gruvbox_256palette.sh ]; then 

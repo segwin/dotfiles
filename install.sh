@@ -1,7 +1,18 @@
 #!/bin/bash
+
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
-DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc"
+if [ -z "$STATE" ]; then
+    if [ ! -d $DOTFILES/oh-my-zsh ]; then 
+        export ZSH="$DOTFILES/oh-my-zsh"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
+fi
+
+
+DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc .virtualenvs/postactivate .virtualenvs/postdeactivate"
+
+mkdir -p $HOME/.config/ranger
+mkdir -p $HOME/.virtualenvs
 
 
 function confirm()
