@@ -36,3 +36,5 @@
 !install.sh
 !dircolors.256dark
 !.pythonrc
+!.virtualenvs/postactivate
+!.virtualenvs/postdeactivate

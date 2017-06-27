@@ -25,6 +25,19 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export LC_ALL="en_US.UTF-8"
 
+zstyle ':completion:*' menu select
+zstyle :compinstall filename '/home/loracett/.zshrc'
+
+autoload -Uz compinit
+compinit
+#
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+#
+#setopt share_history
+
 # if command isn't found, suggests a likely package to install
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
