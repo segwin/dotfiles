@@ -19,8 +19,7 @@ Plug 'vim-airline/vim-airline'          " nice status bar
 Plug 'vim-airline/vim-airline-themes'   " nice status bar colors
 Plug 'nathanaelkane/vim-indent-guides'  " toggle: \-ig
 Plug 'kshenoy/vim-signature'            " show marks beside line no
-Plug 'morhetz/gruvbox'                  " Colorscheme
-Plug 'altercation/vim-colors-solarized' " Colorscheme
+Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'               " git plugin
 Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
 Plug 'majutsushi/tagbar'                " Code navigation

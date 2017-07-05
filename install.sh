@@ -2,11 +2,6 @@
 
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
-if [ -z "$STATE" ]; then
-    if [ ! -d $DOTFILES/oh-my-zsh ]; then 
-        export ZSH="$DOTFILES/oh-my-zsh"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
-fi
 
 
 DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc .virtualenvs/postactivate .virtualenvs/postdeactivate"
@@ -44,3 +39,16 @@ for f in $DOTFILES_TO_INSTALL; do
     fi
 done
 
+# install oh-my-zsh
+if [ -z "$STATE" ]; then
+    if [ ! -d $DOTFILES/oh-my-zsh ]; then 
+        export ZSH="$DOTFILES/oh-my-zsh"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
+fi
+
+# install on-my-tmmux
+cd $HOME
+if confirm "Use oh-my-tmux"; then
+    ln -sf $DOTFILES/scm/oh-my-tmux/.tmux.conf
+    cp $DOTFILES/scm/oh-my-tmux/.tmux.conf.local .
+fi
