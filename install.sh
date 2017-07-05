@@ -4,7 +4,7 @@ DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 
 
-DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc .virtualenvs/postactivate .virtualenvs/postdeactivate"
+DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf.local .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc .virtualenvs/postactivate .virtualenvs/postdeactivate"
 
 mkdir -p $HOME/.config/ranger
 mkdir -p $HOME/.virtualenvs
@@ -47,8 +47,8 @@ if [ -z "$STATE" ]; then
 fi
 
 # install on-my-tmmux
-cd $HOME
-if confirm "Use oh-my-tmux"; then
-    ln -sf $DOTFILES/scm/oh-my-tmux/.tmux.conf
-    cp $DOTFILES/scm/oh-my-tmux/.tmux.conf.local .
-fi
+ln -sf $DOTFILES/.tmux/.tmux.conf
+# cd $HOME
+# if confirm "Use oh-my-tmux"; then
+#     cp $DOTFILES/.tmux/.tmux.conf.local $
+# fi
