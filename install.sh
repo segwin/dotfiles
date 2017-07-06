@@ -4,13 +4,12 @@ DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 
 
-DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf.local .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc .virtualenvs/postactivate .virtualenvs/postdeactivate"
+DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf.local .vimrc .zshrc .bashrc .config/ranger/rc.conf .config/ranger/scope.sh dircolors.256dark .pythonrc"
 
 DOTFILES_TO_INSTALL_i3=" .config/i3/config .config/i3/conky.conf .config/i3/conky-wrapper .config/lxterminal/lxterminal.conf .conky .conkyrc .w3m/config .Xresources"
 
 
 mkdir -p $HOME/.config/ranger
-mkdir -p $HOME/.virtualenvs
 
 
 function confirm()
