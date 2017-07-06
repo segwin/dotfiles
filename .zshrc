@@ -9,8 +9,8 @@ export ZSH=/home/loracett/scm/dotfiles/oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="ys"
 #ZSH_THEME="refined"
-#ZSH_THEME="amuse"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="amuse"
+#ZSH_THEME="robbyrussell"
 
 #RPROMPT=%F{246}%K{246}%F{234}%D{%H:%M:%S}%f%k
 #PROMPT=%{%K{246}%F{234}%}%n%{%F{246}%K{239}%}%{%F{246}%}%m%{%F{239}%K{237}%}%{%F{246}%}%~%{%(?:%F{46}%} ✔%{:%F{196}%} ✘%{)%k%F{237}%}%{%f%}
@@ -27,7 +27,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git virtualenvs virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,9 +124,9 @@ function randomWordSpace() {
     shuf -n${1:-3} /usr/share/dict/words | sed "s/'//" | sed "s/.*/\u&/" | paste -s -d ' ' -
 }
 
-if [ -e ~/.vim/plugged/gruvbox/gruvbox_256palette.sh ]; then 
-    ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
-fi
+# if [ -e ~/.vim/plugged/gruvbox/gruvbox_256palette.sh ]; then 
+#     ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
+# fi
 
 
 if [ -e ~/.pythonrc ]; then 
