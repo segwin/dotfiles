@@ -74,9 +74,9 @@ try
     "set background=dark
     "let g:airline_theme='solarized' "
 
-    "colorscheme gruvbox
+    colorscheme gruvbox
 
-    colorscheme wombat256mod
+    "colorscheme wombat256mod
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
