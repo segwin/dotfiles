@@ -85,7 +85,9 @@ try
     "let g:airline_theme='solarized' "
     "let g:solarized_termcolors=256
     "let g:solarized_contrast='high'
-    call RandColor()
+
+    "call RandColor()
+    colorscheme seoul256
 
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
