@@ -114,6 +114,9 @@ set laststatus=2
 
 " mode is shown in the status line
 set noshowmode
+"
+" Open splits more naturally
+set splitright
 
 " Show invisible chars (eol, tabs, trailing space)
 "set list
