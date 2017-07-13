@@ -61,7 +61,7 @@ export PS1
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    eval `dircolors dircolors.256dark`
+    eval `dircolors ~/.dircolors.256dark`
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'

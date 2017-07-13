@@ -83,19 +83,45 @@ export VISUAL=$EDITOR
 
 TERM=xterm-256color
 
-eval `dircolors ~/dircolors.256dark`
+eval `dircolors ~/.dircolors.256dark`
 
+
+# from https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+#    ESC[ … 38;5;<n> … m Select foreground color
+#    ESC[ … 48;5;<n> … m Select background color
+#    0x00-0x07:  standard colors (as in ESC [ 30–37 m)
+#    0x08-0x0F:  high intensity colors (as in ESC [ 90–97 m)
+#    0x10-0xE7:  6 × 6 × 6 cube (216 colors): 16 + 36 × r + 6 × g + b (0 ≤ r, g, b ≤ 5)
+#    0xE8-0xFF:  grayscale from black to white in 24 steps
 function term-256-color-test()
 {
     for fgbg in 38 48 ; do #Foreground/Background
-        for ((color=0; color<256; color++)); do
+        echo "Standard colors"
+        for ((color=0; color<8; color++)); do
+            echo -en "\e[${fgbg};5;${color}m $(echo '   '${color}|tail -c 4)\e[0m"
+        done
+        echo #New line
+        echo #New line
+        echo "High-intensity colors"
+        for ((color=8; color<16; color++)); do
+            echo -en "\e[${fgbg};5;${color}m $(echo '   '${color}|tail -c 4)\e[0m"
+        done
+        echo #New line
+        echo #New line
+        for ((color=16; color<232; color++)); do
             #Display the color
-            echo -en "\e[${fgbg};5;${color}m $(echo '   '${color}|tail -c 4)\e[0m "
-            #Display 16 colors per lines
-            if [ $((($color + 1) % 16)) = 0 ] ; then
+            echo -en "\e[${fgbg};5;${color}m $(echo '   '${color}|tail -c 4)\e[0m"
+            #Display 36 colors per lines
+            if [ $((($color - 15) % 36)) = 0 ] ; then
                 echo #New line
             fi
         done
+        echo #New line
+        echo "Grayscale colors"
+        for ((color=232; color<256; color++)); do
+            echo -en "\e[${fgbg};5;${color}m $(echo '   '${color}|tail -c 4)\e[0m"
+        done
+        echo #New line
         echo #New line
     done
 }
