@@ -22,3 +22,5 @@
 	prompt = false
 [merge]
 	tool = vimdiff
+[help]
+	autocorrect = 20
