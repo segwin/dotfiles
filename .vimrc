@@ -196,19 +196,23 @@ if has('cscope')
 endif
 
 " Toggle line numbers and special characters with <F3>
-noremap <F3> :set list!\|set nu!<CR>
-inoremap <F3> <C-o>:set list!\|set nu!<CR>
+noremap <F3> :set nu!<CR>
+inoremap <F3> <C-o>:set nu!<CR>
 
 " Toggle paste mode
 noremap <F2> :set paste!<CR>
 inoremap <F2> <C-o>:set paste!<CR>
 
-" switch back to last buffer
-cmap bb b#
-
 " Random Colorscheme
 noremap <F4> :call RandColor()<CR>
+inoremap <F4> <C-o>:call RandColor()<CR>
 
+" Switch background
+noremap <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+inoremap <F5> <C-o>:let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" switch back to last buffer
+cmap bb b#
 
     
 
