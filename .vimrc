@@ -62,21 +62,31 @@ autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
 " color theme
 syntax enable
 set background=dark
-
-let g:solarized_termcolors=256
-let g:solarized_contrast='high'
-
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_contrast_light = 'hard'
+
+" https://stackoverflow.com/a/26314537
+let g:rnd = localtime() % 0x10000
+function! Random(n) abort
+  let g:rnd = (g:rnd * 31421 + 6927) % 0x10000
+  return g:rnd * a:n / 0x10000
+endfunction
+
+function! RandColor()
+    let colorschemelist = ["gruvbox", "wombat256mod", "onedark", "landscape", "seoul256"]
+    set background=dark
+    let l:colorName = colorschemelist[Random(len(colorschemelist))]
+    execute 'colorscheme '.l:colorName
+endfunction
 
 try
     "colorscheme solarized
     "set background=dark
     "let g:airline_theme='solarized' "
+    "let g:solarized_termcolors=256
+    "let g:solarized_contrast='high'
+    call RandColor()
 
-    colorscheme gruvbox
-
-    "colorscheme wombat256mod
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert
 endtry
@@ -102,8 +112,11 @@ set showfulltag
 " Always show status line
 set laststatus=2
 
+" mode is shown in the status line
+set noshowmode
+
 " Show invisible chars (eol, tabs, trailing space)
-set list
+"set list
 set listchars=eol:$,tab:▸-,trail:·,extends:↷,precedes:↶,nbsp:•
 
 " Use an undo file and set a directory to store the undo history
@@ -190,7 +203,14 @@ inoremap <F3> <C-o>:set list!\|set nu!<CR>
 noremap <F2> :set paste!<CR>
 inoremap <F2> <C-o>:set paste!<CR>
 
+" switch back to last buffer
+cmap bb b#
 
+" Random Colorscheme
+noremap <F4> :call RandColor()<CR>
+
+
+    
 
 
 " ====================================
