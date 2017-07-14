@@ -23,13 +23,21 @@ Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'               " git plugin
 Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
 Plug 'majutsushi/tagbar'                " Code navigation
-Plug 'Valloric/YouCompleteMe'           " Code completion
 Plug 'python-mode/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
+Plug 'junegunn/fzf.vim'                                           " key bindings
 Plug 'scrooloose/nerdtree',         { 'on': 'NERDTreeToggle' }    " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }    " git status symbole in NERDTree
 Plug 'hari-rangarajan/CCTree',      { 'on': 'CCTreeLoadDB' }      " Call graph, uses cssope
 Plug 'vim-scripts/DrawIt',          { 'on': 'DrawItStart' }       " draw boxes and arrows
+
+function! BuildYCM(info)
+    if a:info.status == 'installed' || a:info.force
+        !./install.py --clang-completer --gocode-completer
+    endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
+
 call plug#end()
 
 
@@ -205,8 +213,7 @@ noremap <F3> :set nu!<CR>
 inoremap <F3> <C-o>:set nu!<CR>
 
 " Toggle paste mode
-noremap <F2> :set paste!<CR>
-inoremap <F2> <C-o>:set paste!<CR>
+set pastetoggle=<F2>
 
 " Random Colorscheme
 noremap <F4> :call RandColor()<CR>
@@ -263,6 +270,34 @@ let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
 " Tagbar
 " ------------
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
+
+
+" git grep
+command! -bang -nargs=* GGrep
+      \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+"     * For syntax-highlighting, Ruby and any of the following tools are
+"     required:
+"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+"       - CodeRay: http://coderay.rubychan.de/
+"       - Rouge: https://github.com/jneen/rouge
+"
+"   :Ag  - Start fzf with hidden preview window that can be enabled with "?"
+"   key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+" Likewise, Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+noremap <leader>e :Files<CR>
+
 
 
 function! GetVisualSelection() " from http://stackoverflow.com/a/6271254
