@@ -7,9 +7,10 @@ export ZSH=/home/loracett/scm/dotfiles/oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="bureau"
 #ZSH_THEME="ys"
 #ZSH_THEME="refined"
-ZSH_THEME="amuse"
+#ZSH_THEME="amuse"
 #ZSH_THEME="robbyrussell"
 
 #RPROMPT=%F{246}%K{246}%F{234}%D{%H:%M:%S}%f%k

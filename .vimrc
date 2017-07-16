@@ -26,8 +26,10 @@ Plug 'majutsushi/tagbar'                " Code navigation
 Plug 'python-mode/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
 Plug 'junegunn/fzf.vim'                                           " key bindings
-Plug 'scrooloose/nerdtree',         { 'on': 'NERDTreeToggle' }    " File explorer
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }    " git status symbole in NERDTree
+Plug 'scrooloose/nerdtree',                                       " File explorer
+Plug 'Xuyuanp/nerdtree-git-plugin',                               " git status symbole in NERDTree
+Plug 'will133/vim-dirdiff'
+Plug 'blindFS/vim-taskwarrior'
 Plug 'hari-rangarajan/CCTree',      { 'on': 'CCTreeLoadDB' }      " Call graph, uses cssope
 Plug 'vim-scripts/DrawIt',          { 'on': 'DrawItStart' }       " draw boxes and arrows
 
@@ -266,6 +268,18 @@ let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
 " ------------
 "autocmd VimEnter * NERDTreeFind
 "autocmd VimEnter * wincmd p
+
+augroup nerd_loader
+    autocmd!
+    autocmd VimEnter * silent! autocmd! FileExplorer
+    autocmd BufEnter,BufNew *
+                \  if isdirectory(expand('<amatch>'))
+                \|   call plug#load('nerdtree')
+                \|   execute 'autocmd! nerd_loader'
+                \| endif
+augroup END
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+let NERDTreeShowHidden=1
 
 " Tagbar
 " ------------
