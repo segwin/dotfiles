@@ -1,0 +1,34 @@
+# ft=zsh
+
+#####
+# Colors
+TERM=xterm-256color
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+eval `dircolors ~/.dircolors.256dark`
+
+# if [ -e ~/.vim/plugged/gruvbox/gruvbox_256palette.sh ]; then 
+#     ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
+# fi
+
+
+#####
+# Environment
+export EDITOR=/usr/bin/env vim
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
+
+if [ -e ~/.pythonrc ]; then 
+    export PYTHONSTARTUP=~/.pythonrc
+    export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PYTHONDONTWRITEBYTECODE=1 # don't write .pyc files to disk
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    export PATH=$HOME/bin:/usr/local/bin:$PATH
+fi
