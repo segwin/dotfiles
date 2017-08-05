@@ -21,6 +21,9 @@ Plug 'nathanaelkane/vim-indent-guides'  " toggle: \-ig
 Plug 'kshenoy/vim-signature'            " show marks beside line no
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'               " git plugin
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
 Plug 'majutsushi/tagbar'                " Code navigation
 Plug 'python-mode/python-mode'
