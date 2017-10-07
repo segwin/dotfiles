@@ -9,8 +9,8 @@
     prompt = false
 [alias]
     d = difftool
+    l = log --graph --pretty=format:'%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ci) %C(cyan)<%an>%Creset' --abbrev-commit
     graph = log --decorate --oneline --graph
-    lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit
     delete-branch = "!f() {git branch -d $1 && git push origin --delete $1 git && fetch --all --prune} f;"
     clean-branches = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
 [difftool "vimdiff"]
