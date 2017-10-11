@@ -20,12 +20,6 @@ function confirm()
     return 1
 }
 
-if confirm "Install oh-my-zsh"; then
-    if [ ! -d $DOTFILES/oh-my-zsh ]; then 
-        export ZSH="$DOTFILES/oh-my-zsh"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
-fi
-
 for f in $DOTFILES_TO_INSTALL; do
     if [ -h $HOME/$f ]; then
         if [ $(readlink $HOME/$f) = $DOTFILES/$f ]; then
