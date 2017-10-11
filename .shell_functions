@@ -84,3 +84,15 @@ function randomWordSpace() {
     shuf -n${1:-3} /usr/share/dict/words | sed "s/'//" | sed "s/.*/\u&/" | paste -s -d ' ' -
 }
 
+function wttr() {
+    if [ -z "$1" ]; then
+        curl -s 'http://wttr.in/Montreal?mpq&lang=fr' | head -n 38 
+    else
+        if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+            curl -s http://wttr.in/:help
+        else
+            curl -s "http://wttr.in/$1?pqm&lang=fr" | head -n 38 
+        fi
+    fi
+
+}
