@@ -32,16 +32,15 @@ Plug 'junegunn/fzf.vim'                                           " key bindings
 Plug 'scrooloose/nerdtree',                                       " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin',                               " git status symbole in NERDTree
 Plug 'will133/vim-dirdiff'
-Plug 'blindFS/vim-taskwarrior'
 Plug 'hari-rangarajan/CCTree',      { 'on': 'CCTreeLoadDB' }      " Call graph, uses cssope
-Plug 'vim-scripts/DrawIt',          { 'on': 'DrawItStart' }       " draw boxes and arrows
+Plug 'vim-scripts/DrawIt'                                         " draw boxes and arrows
 
 function! BuildYCM(info)
     if a:info.status == 'installed' || a:info.force
         !./install.py --clang-completer --gocode-completer
     endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -69,7 +68,7 @@ set cindent
 set autoindent
 filetype indent on
 autocmd FileType make set noexpandtab
-autocmd BufRead,BufNewFile   *.html,*.php setl sw=2 sts=2 et foldmethod=indent
+autocmd BufRead,BufNewFile   *.html,*.php,*.yaml setl sw=2 sts=2 et foldmethod=indent
 autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
 
 " color theme
