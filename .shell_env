@@ -12,7 +12,7 @@ eval `dircolors ~/.dircolors.256dark`
 
 #####
 # Environment
-export EDITOR=/usr/bin/env vim
+export EDITOR=`which vim`
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
