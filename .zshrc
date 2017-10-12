@@ -6,8 +6,9 @@
 source ~/.zplug/init.zsh
 
 # Pure theme specifying files `async.zsh`(theme dependency) and `pure.zsh` to be loaded
-zplug "sindresorhus/pure", use:"{async,pure}.zsh"
-zplug "zsh-users/zsh-syntax-highlighting", from:github
+zplug "sindresorhus/pure", use:"{async,pure}.zsh"  # prompt theme
+zplug "zsh-users/zsh-syntax-highlighting"          # highlight commands
+zplug "zsh-users/zsh-autosuggestions"              # suggest commands from history
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Check for uninstalled plugins and install them.
@@ -26,8 +27,8 @@ zstyle ':completion:*' menu select
 
 # History
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey -e
 #setopt share_history
 
