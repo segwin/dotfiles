@@ -15,11 +15,11 @@ endif
 " Plugin Management with vim-plug
 " ====================================
 call plug#begin()
+Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'          " nice status bar
 Plug 'vim-airline/vim-airline-themes'   " nice status bar colors
 Plug 'nathanaelkane/vim-indent-guides'  " toggle: \-ig
 Plug 'kshenoy/vim-signature'            " show marks beside line no
-Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-fugitive'               " git plugin
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -31,8 +31,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
 Plug 'junegunn/fzf.vim'                                           " key bindings
 Plug 'scrooloose/nerdtree',                                       " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin',                               " git status symbole in NERDTree
-Plug 'will133/vim-dirdiff'
-Plug 'hari-rangarajan/CCTree',      { 'on': 'CCTreeLoadDB' }      " Call graph, uses cssope
 Plug 'vim-scripts/DrawIt'                                         " draw boxes and arrows
 
 function! BuildYCM(info)
@@ -40,7 +38,7 @@ function! BuildYCM(info)
         !./install.py --clang-completer --gocode-completer
     endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -74,36 +72,12 @@ autocmd BufRead,BufNewFile   *.c,*.cpp,*.h setl sw=4 sts=4 et
 " color theme
 syntax enable
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_contrast_light = 'hard'
-
-" https://stackoverflow.com/a/26314537
-let g:rnd = localtime() % 0x10000
-function! Random(n) abort
-  let g:rnd = (g:rnd * 31421 + 6927) % 0x10000
-  return g:rnd * a:n / 0x10000
-endfunction
-
-function! RandColor()
-    let colorschemelist = ["gruvbox", "wombat256mod", "onedark", "landscape", "seoul256"]
-    set background=dark
-    let l:colorName = colorschemelist[Random(len(colorschemelist))]
-    execute 'colorscheme '.l:colorName
-endfunction
-
-try
-    "colorscheme solarized
-    "set background=dark
-    "let g:airline_theme='solarized' "
-    "let g:solarized_termcolors=256
-    "let g:solarized_contrast='high'
-
-    "call RandColor()
-    colorscheme seoul256
-
-catch /^Vim\%((\a\+)\)\=:E185/
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+else
     colorscheme desert
-endtry
+endif
 
 if &term =~ '256color'
     " disable Background Color Erase (BCE)
@@ -128,7 +102,7 @@ set laststatus=2
 
 " mode is shown in the status line
 set noshowmode
-"
+
 " Open splits more naturally
 set splitright
 
@@ -187,6 +161,9 @@ if has("gui_running")
 endif
 
 
+" ====================================
+" Key Maps
+" ====================================
 "cscope config
 if has('cscope')
     set cscopetag
@@ -219,19 +196,10 @@ inoremap <F3> <C-o>:set nu!<CR>
 " Toggle paste mode
 set pastetoggle=<F2>
 
-" Random Colorscheme
-noremap <F4> :call RandColor()<CR>
-inoremap <F4> <C-o>:call RandColor()<CR>
-
-" Switch background
-noremap <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-inoremap <F5> <C-o>:let &background = ( &background == "dark"? "light" : "dark" )<CR>
-
 " switch back to last buffer
 cmap bb b#
 
     
-
 
 " ====================================
 " Plugin Configuration
@@ -247,7 +215,7 @@ autocmd FileType python set colorcolumn=120
 " ------------
 "  " don't count trailing whitespace since it lags in huge files
 "let g:airline#extensions#whitespace#enabled = 0
-"  " put a buffer list at the top
+ " put a buffer list at the top
 let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t' " Show just the filename
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -267,11 +235,11 @@ else
     let g:airline_powerline_fonts = 1 " needs https://github.com/powerline/fonts
 endif
 
+
 " NERDTree
 " ------------
 "autocmd VimEnter * NERDTreeFind
 "autocmd VimEnter * wincmd p
-
 augroup nerd_loader
     autocmd!
     autocmd VimEnter * silent! autocmd! FileExplorer
@@ -284,26 +252,19 @@ augroup END
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 
+
 " Tagbar
 " ------------
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 
 
+" fzf
+" ------------
 " git grep
 command! -bang -nargs=* GGrep
       \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
 
 " Augmenting Ag command using fzf#vim#with_preview function
-"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
-"     * For syntax-highlighting, Ruby and any of the following tools are
-"     required:
-"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
-"       - CodeRay: http://coderay.rubychan.de/
-"       - Rouge: https://github.com/jneen/rouge
-"
-"   :Ag  - Start fzf with hidden preview window that can be enabled with "?"
-"   key
-"   :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>,
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
@@ -317,6 +278,9 @@ noremap <leader>e :Files<CR>
 
 
 
+" ====================================
+" Funcitons
+" ====================================
 function! GetVisualSelection() " from http://stackoverflow.com/a/6271254
     let [lnum1, col1] = getpos("'<")[1:2]
     let [lnum2, col2] = getpos("'>")[1:2]
@@ -325,6 +289,7 @@ function! GetVisualSelection() " from http://stackoverflow.com/a/6271254
     let lines[0] = lines[0][col1 - 1:]
     return join(lines, "\n")
 endfunction
+
 function! EncodeUrl(url) " Add characters as needed
     let l:encoded=substitute(a:url,     " ",  "\\\\%20", "g") " Space
     let l:encoded=substitute(l:encoded, "&",  "\\\\%26", "g") " Ampersand 
@@ -353,12 +318,22 @@ function! EncodeUrl(url) " Add characters as needed
     " let l:encoded=substitute(l:encoded, ^,  \\\\%5E, g) " Caret 
     return encoded
 endfunction
+
 function! SearchGoogleW3m(str,extra)
     let l:sCmd="w3m -M www.google.com/search\\?q=".EncodeUrl(a:str).a:extra
     "echom l:sCmd
     execute "!" . l:sCmd
 endfunction
+
 vnoremap <leader>g :call SearchGoogleW3m(GetVisualSelection(), "")<CR>
+
+
+" https://stackoverflow.com/a/26314537
+let g:rnd = localtime() % 0x10000
+function! Random(n) abort
+  let g:rnd = (g:rnd * 31421 + 6927) % 0x10000
+  return g:rnd * a:n / 0x10000
+endfunction
 
 
 if !empty(glob("~/.vim/plugged/tagbar/plugin/tagbar.vim"))
