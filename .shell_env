@@ -18,10 +18,12 @@ export VISUAL=$EDITOR
 
 if [ -e ~/.pythonrc ]; then 
     export PYTHONSTARTUP=~/.pythonrc
-    export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
-    export WORKON_HOME=$HOME/.virtualenvs
     export PYTHONDONTWRITEBYTECODE=1 # don't write .pyc files to disk
-    source /usr/local/bin/virtualenvwrapper.sh
+    if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then 
+        export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+        export WORKON_HOME=$HOME/.virtualenvs
+        source /usr/local/bin/virtualenvwrapper.sh
+    fi
 fi
 
 # set PATH so it includes user's private bin if it exists
