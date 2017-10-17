@@ -5,11 +5,11 @@
 # Load zplug
 source ~/.zplug/init.zsh
 
-# Pure theme specifying files `async.zsh`(theme dependency) and `pure.zsh` to be loaded
-zplug "sindresorhus/pure", use:"{async,pure}.zsh"  # prompt theme
-zplug "zsh-users/zsh-syntax-highlighting"          # highlight commands
-zplug "zsh-users/zsh-autosuggestions"              # suggest commands from history
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'            # Use zplug to update zplug
+zplug "zsh-users/zsh-syntax-highlighting"                        # highlight commands
+zplug "zsh-users/zsh-autosuggestions"                            # suggest commands from history
+zplug "intelfx/pure", use:"{async,pure}.zsh"                     # prompt
+zplug "chriskempson/base16-shell", use:"base16-shell.plugin.zsh" # Themes
 
 # Check for uninstalled plugins and install them.
 zplug check || zplug install 
@@ -17,7 +17,8 @@ zplug check || zplug install
 # Source plugins and add commands to $PATH, add  --verbose for details
 zplug load
 
-
+# Theme
+base16_oceanicnext
 
 # User configuration
 export LC_ALL="en_US.UTF-8"
