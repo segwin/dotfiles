@@ -26,3 +26,5 @@
 	tool = vimdiff
 [help]
 	autocorrect = 20
+[include]
+        path = ~/.gitconfig.user
