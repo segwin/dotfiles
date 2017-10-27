@@ -31,6 +31,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
 Plug 'junegunn/fzf.vim'                                           " key bindings
 Plug 'scrooloose/nerdtree',                                       " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin',                               " git status symbole in NERDTree
+Plug 'ryanoasis/vim-devicons'
 Plug 'vim-scripts/DrawIt'                                         " draw boxes and arrows
 
 function! BuildYCM(info)
