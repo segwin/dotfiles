@@ -28,10 +28,6 @@ zplug check || zplug install
 # Source plugins and add commands to $PATH, add  --verbose for details
 zplug load
 
-
-# Select color palette
-base16_oceanicnext
-
 #prompt for 'Do you want to install it? (N/y)' if command not found
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 

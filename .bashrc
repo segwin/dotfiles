@@ -28,7 +28,6 @@ bplug 'chriskempson/base16-shell' ''
 
 # Select color palette
 eval "$(~/.bplug/repos/chriskempson/base16-shell/profile_helper.sh)"
-base16_oceanicnext
 
 # if command isn't found, suggests a likely package to install
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
