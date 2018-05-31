@@ -21,12 +21,13 @@ Plug 'vim-airline/vim-airline-themes'   " nice status bar colors
 Plug 'nathanaelkane/vim-indent-guides'  " toggle: \-ig
 Plug 'kshenoy/vim-signature'            " show marks beside line no
 Plug 'tpope/vim-fugitive'               " git plugin
+Plug 'altercation/vim-colors-solarized' " vim solarized colors
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
 Plug 'majutsushi/tagbar'                " Code navigation
-Plug 'python-mode/python-mode'
+"Plug 'python-mode/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
 Plug 'junegunn/fzf.vim'                                           " key bindings
 Plug 'scrooloose/nerdtree',                                       " File explorer
@@ -39,7 +40,7 @@ function! BuildYCM(info)
         !./install.py --clang-completer --gocode-completer
     endif
 endfunction
-" Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
 
 call plug#end()
 
@@ -77,7 +78,9 @@ if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
 else
-    colorscheme desert
+    let g:solarized_termtrans=1
+    let g:solarized_diffmode="high"
+    colorscheme solarized
 endif
 
 if &term =~ '256color'
@@ -141,6 +144,9 @@ endif
 "  highlight the current line in every window and update the highlight as the
 "  cursor moves.
 set cursorline
+
+set mouse=n             " Enable mouse mode
+set ttymouse=xterm2     " Set TTY mouse type
 
 " Let cursor move past the last char in <C-v> mode
 set virtualedit=block
@@ -343,5 +349,9 @@ else
     echom "Using <cword> for <leader>t"
     noremap <leader>t :make TEST=<C-R>=expand("<cword>")<CR><CR>
 endif
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = '0'
+let g:ycm_max_diagnostics_to_display = 1000
 
 

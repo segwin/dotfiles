@@ -32,7 +32,7 @@ zplug load
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 # if you do a 'rm *', Zsh will give you a sanity check!
-setopt RM_STAR_WAIT
+#setopt RM_STAR_WAIT
 
 # # Zsh has a spelling corrector
 setopt CORRECT
@@ -47,3 +47,5 @@ bindkey '^x^e' edit-command-line
 [ -e ~/.shell_alias ] && source ~/.shell_alias 
 [ -e ~/.shell_env ] && source ~/.shell_env
 [ -e ~/.shell_functions ] && source ~/.shell_functions
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
