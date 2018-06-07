@@ -15,32 +15,39 @@ endif
 " Plugin Management with vim-plug
 " ====================================
 call plug#begin()
-Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'          " nice status bar
-Plug 'vim-airline/vim-airline-themes'   " nice status bar colors
-Plug 'nathanaelkane/vim-indent-guides'  " toggle: \-ig
-Plug 'kshenoy/vim-signature'            " show marks beside line no
-Plug 'tpope/vim-fugitive'               " git plugin
-Plug 'altercation/vim-colors-solarized' " vim solarized colors
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'christoomey/vim-tmux-navigator'   " navigate seamlessly between vim and tmux splits
-Plug 'majutsushi/tagbar'                " Code navigation
-"Plug 'python-mode/python-mode'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzy seach
-Plug 'junegunn/fzf.vim'                                           " key bindings
-Plug 'scrooloose/nerdtree',                                       " File explorer
-Plug 'Xuyuanp/nerdtree-git-plugin',                               " git status symbole in NERDTree
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-scripts/DrawIt'                                         " draw boxes and arrows
 
-function! BuildYCM(info)
-    if a:info.status == 'installed' || a:info.force
-        !./install.py --clang-completer --gocode-completer
-    endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': function('BuildYCM') }
+" Appearance
+Plug 'vim-airline/vim-airline'              " Status bar for vim
+Plug 'vim-airline/vim-airline-themes'       " Status bar colors
+Plug 'altercation/vim-colors-solarized'     " Solarized colours
+Plug 'ryanoasis/vim-devicons'               " Add file type icons to vim plugins: NERDTree, vim-airline
+Plug 'nathanaelkane/vim-indent-guides'      " Show indent guides
+Plug 'kshenoy/vim-signature'                " Show marks beside line numbers
+
+" Utility
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
+Plug 'scrooloose/nerdtree'                  " File explorer
+Plug 'Xuyuanp/nerdtree-git-plugin'          " Git status symbols in NERDTree
+Plug 'majutsushi/tagbar'                    " Code navigation
+Plug 'tpope/vim-fugitive'                   " Git plugin
+Plug 'christoomey/vim-tmux-navigator'       " Navigate seamlessly between vim and tmux splits
+
+" Shortcuts
+Plug 'vim-scripts/DrawIt'                   " Ascii drawing plugin
+Plug 'tpope/vim-commentary'                 " Comment out lines
+Plug 'tpope/vim-surround'                   " Add quotes/parentheses
+Plug 'tpope/vim-repeat'                     " Enable repeating supported plugin maps with '.'
+
+" Generic programming
+Plug 'universal-ctags/ctags'                " ctags support
+Plug 'honza/vim-snippets'                   " Code snippets for various languages
+Plug 'Townk/vim-autoclose'                  " Automatically add closing character (e.g. '(' -> '()')
+Plug 'Valloric/YouCompleteMe'               " Powerful code completion engine
+
+" Markdown
+Plug 'tpope/vim-markdown'                   " Markdown runtime files
+Plug 'jtratner/vim-flavored-markdown'       " Enable GitHub-flavoured Markdown
+
 
 call plug#end()
 
@@ -146,7 +153,10 @@ endif
 set cursorline
 
 set mouse=n             " Enable mouse mode
-set ttymouse=xterm2     " Set TTY mouse type
+
+if !has('nvim')
+    set ttymouse=xterm2     " Set TTY mouse type
+endif
 
 " Let cursor move past the last char in <C-v> mode
 set virtualedit=block
@@ -211,6 +221,10 @@ cmap bb b#
 " ====================================
 " Plugin Configuration
 " ====================================
+
+" deoplete
+" --------
+let g:deoplete#enable_at_startup = 1
 
 " python-mode
 " -----------
@@ -350,7 +364,7 @@ else
     noremap <leader>t :make TEST=<C-R>=expand("<cword>")<CR><CR>
 endif
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = '0'
 let g:ycm_max_diagnostics_to_display = 1000
 

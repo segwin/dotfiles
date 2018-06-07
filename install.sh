@@ -4,9 +4,10 @@ DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 
 
-DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .zshrc .bashrc .shell_alias .shell_env .shell_functions .config/ranger/rc.conf .config/ranger/scope.sh .dircolors.256dark .pythonrc .w3m/config"
+DOTFILES_TO_INSTALL="bin .subversion .gitconfig .tmux.conf .vimrc .vim/.ycm_extra_conf.py .zshrc .bashrc .shell_alias .shell_env .shell_functions .config/ranger/rc.conf .config/ranger/scope.sh .dircolors.256dark .pythonrc .w3m/config"
 DOTFILES_TO_INSTALL_i3=" .config/i3/config .config/i3/conky.conf .config/i3/conky-wrapper .config/lxterminal/lxterminal.conf .conky .conkyrc .Xresources"
 
+mkdir -p $HOME/.vim
 mkdir -p $HOME/.config/ranger
 mkdir -p $HOME/.w3m
 

@@ -35,3 +35,5 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 [ -e ~/.shell_alias ] && source ~/.shell_alias        
 [ -e ~/.shell_env ] && source ~/.shell_env            
 [ -e ~/.shell_functions ] && source ~/.shell_functions
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
