@@ -39,8 +39,6 @@ Plug 'tpope/vim-surround'                   " Add quotes/parentheses
 Plug 'tpope/vim-repeat'                     " Enable repeating supported plugin maps with '.'
 
 " Generic programming
-Plug 'universal-ctags/ctags'                " ctags support
-Plug 'honza/vim-snippets'                   " Code snippets for various languages
 Plug 'Townk/vim-autoclose'                  " Automatically add closing character (e.g. '(' -> '()')
 Plug 'Valloric/YouCompleteMe'               " Powerful code completion engine
 
