@@ -46,7 +46,6 @@ Plug 'Valloric/YouCompleteMe'               " Powerful code completion engine
 Plug 'tpope/vim-markdown'                   " Markdown runtime files
 Plug 'jtratner/vim-flavored-markdown'       " Enable GitHub-flavoured Markdown
 
-
 call plug#end()
 
 
@@ -210,6 +209,9 @@ inoremap <F3> <C-o>:set nu!<CR>
 
 " Toggle paste mode
 set pastetoggle=<F2>
+
+" Remove trailing whitespace with <F5>
+:nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 " switch back to last buffer
 cmap bb b#

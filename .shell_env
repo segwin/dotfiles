@@ -9,6 +9,9 @@ eval `dircolors ~/.dircolors.256dark`
 #     ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
 # fi
 
+# set user limits
+ulimit -c unlimited
+
 
 #####
 # Environment
