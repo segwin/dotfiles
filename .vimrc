@@ -39,7 +39,6 @@ Plug 'tpope/vim-surround'                   " Add quotes/parentheses
 Plug 'tpope/vim-repeat'                     " Enable repeating supported plugin maps with '.'
 
 " Generic programming
-Plug 'Townk/vim-autoclose'                  " Automatically add closing character (e.g. '(' -> '()')
 Plug 'Valloric/YouCompleteMe'               " Powerful code completion engine
 
 " Markdown
@@ -364,7 +363,7 @@ else
     noremap <leader>t :make TEST=<C-R>=expand("<cword>")<CR><CR>
 endif
 
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = '0'
 let g:ycm_max_diagnostics_to_display = 1000
 
