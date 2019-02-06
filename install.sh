@@ -2,13 +2,13 @@
 
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
-
-
 DOTFILES_TO_INSTALL="bin .subversion .gitconfig .profile .tmux.conf .vimrc .vim/.ycm_extra_conf.py .zshrc .bashrc .shell_alias .shell_env .shell_functions .config/ranger/rc.conf .config/ranger/scope.sh .dircolors.256dark .pythonrc .w3m/config"
 DOTFILES_TO_INSTALL_i3=" .config/i3/config .config/i3/conky.conf .config/i3/conky-wrapper .config/lxterminal/lxterminal.conf .conky .conkyrc .Xresources"
 
 mkdir -p $HOME/.vim
+mkdir -p $HOME/.config/i3
 mkdir -p $HOME/.config/ranger
+mkdir -p $HOME/.config/lxterminal
 mkdir -p $HOME/.w3m
 
 function confirm()
@@ -20,6 +20,9 @@ function confirm()
     fi
     return 1
 }
+
+# Update submodules
+TMP=$(cd $DOTFILES && git submodule update --init --recursive)
 
 for f in $DOTFILES_TO_INSTALL; do
     if [ -h $HOME/$f ]; then
