@@ -27,7 +27,9 @@
 [help]
 	autocorrect = 20
 [include]
-        path = ~/.gitconfig.user
+    path = ~/.gitconfig.user
 [user]
     name = Eric Seguin
     email = eric@segwin.ca
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
