@@ -19,7 +19,7 @@ call plug#begin()
 " Appearance
 Plug 'vim-airline/vim-airline'              " Status bar for vim
 Plug 'vim-airline/vim-airline-themes'       " Status bar colors
-Plug 'altercation/vim-colors-solarized'     " Solarized colours
+Plug 'joshdick/onedark.vim'                 " Colour scheme (One Dark)
 Plug 'ryanoasis/vim-devicons'               " Add file type icons to vim plugins: NERDTree, vim-airline
 Plug 'nathanaelkane/vim-indent-guides'      " Show indent guides
 Plug 'kshenoy/vim-signature'                " Show marks beside line numbers
@@ -39,7 +39,9 @@ Plug 'tpope/vim-surround'                   " Add quotes/parentheses
 Plug 'tpope/vim-repeat'                     " Enable repeating supported plugin maps with '.'
 
 " Generic programming
+Plug 'sheerun/vim-polyglot'                 " Syntax highlighting
 Plug 'Valloric/YouCompleteMe'               " Powerful code completion engine
+Plug 'vim-syntastic/syntastic'              " Python linter
 
 " Markdown
 Plug 'tpope/vim-markdown'                   " Markdown runtime files
@@ -81,9 +83,7 @@ if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
 else
-    let g:solarized_termtrans=1
-    let g:solarized_diffmode="high"
-    colorscheme solarized
+    colorscheme onedark
 endif
 
 if &term =~ '256color'
@@ -276,6 +276,7 @@ let NERDTreeShowHidden=1
 " Tagbar
 " ------------
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 
 " fzf
@@ -297,6 +298,18 @@ command! -bang -nargs=? -complete=dir Files
 noremap <leader>e :Files<CR>
 
 
+" syntastic
+" -----------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E111,E113,E122,E131,E201,E202,E221,E226,E261,E402,E501,W503,W504,E701'
 
 " ====================================
 " Funcitons
@@ -366,5 +379,4 @@ endif
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = '0'
 let g:ycm_max_diagnostics_to_display = 1000
-
 
