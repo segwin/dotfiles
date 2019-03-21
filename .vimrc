@@ -83,7 +83,8 @@ if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
 else
-    let g:onedark_termcolors=256
+    let g:onedark_termcolors = 256
+    let g:onedark_terminal_italics = 1
     colorscheme onedark
 endif
 
