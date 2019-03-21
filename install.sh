@@ -4,6 +4,7 @@ DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 DOTFILES_TO_INSTALL="bin .subversion .gitconfig .profile .tmux.conf .vimrc .vim/.ycm_extra_conf.py .zshrc .bashrc .shell_alias .shell_env .shell_functions .tmux-onedark-theme .config/ranger/rc.conf .config/ranger/scope.sh .dircolors.256dark .pythonrc .w3m/config"
 DOTFILES_TO_INSTALL_i3=" .config/i3/config .config/i3/conky.conf .config/i3/conky-wrapper .config/lxterminal/lxterminal.conf .conky .conkyrc .Xresources"
+DOTFILES_TO_INSTALL_TIC=" .tmux.terminfo"
 
 mkdir -p $HOME/.vim
 mkdir -p $HOME/.config/i3
@@ -43,6 +44,29 @@ for f in $DOTFILES_TO_INSTALL; do
     fi
 done
 
+if confirm "Install tmux terminfo"; then
+    for f in $DOTFILES_TO_INSTALL_TIC; do
+        if [ -h $HOME/$f ]; then
+            if [ $(readlink $HOME/$f) = $DOTFILES/$f ]; then
+                echo $f already installed
+            fi
+        else
+            if [ -f $HOME/$f ]; then
+                if confirm "Overwrite $HOME/$f?"; then
+                    rm -rf $HOME/$f
+                    ln -s $DOTFILES/$f $HOME/$f
+                    echo $HOME/$f installed!
+                fi
+            else
+                ln -s $DOTFILES/$f $HOME/$f
+                echo $HOME/$f installed!
+            fi
+        fi
+    done
+
+    tic -x $HOME/.tmux.terminfo
+fi
+
 if confirm "Install i3 dotfiles"; then
     for f in $DOTFILES_TO_INSTALL_i3; do
         if [ -h $HOME/$f ]; then
@@ -63,4 +87,3 @@ if confirm "Install i3 dotfiles"; then
         fi
     done
 fi
-
