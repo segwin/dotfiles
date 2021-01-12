@@ -1,0 +1,10 @@
+[alias]
+  permission-reset = !git diff -p -R --no-ext-diff --no-color | grep -E '^(diff|(old|new) mode)' --color=never | git apply
+[merge]
+  ff = true
+[user]
+  name = Eric Seguin
+  email = eric@segwin.ca
+#  email = eric.seguin@districtm.net
+[url "git@github.com:"]
+  insteadOf = https://github.com/

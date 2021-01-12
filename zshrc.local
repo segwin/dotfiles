@@ -1,0 +1,69 @@
+# install zplug
+[ ! -d ~/.zplug ] && curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+
+# load zplug
+source ~/.zplug/init.zsh
+
+zplug "zplug/zplug"                                     # Let zplug manage zplug
+zplug "yous/vanilli.sh"                                 # A lightweight start point of shell configuration
+zplug "zsh-users/zsh-completions"                       # Additional completion definitions for Zsh
+zplug "zsh-users/zsh-autosuggestions"                   # suggest commands from history
+# zplug "yous/lime"                                       # Simple prompt
+zplug "nojhan/liquidprompt"                             # more complexe prompt
+#zplug "chriskempson/base16-shell"                       # Color palette
+zplug "plugins/command-not-found.plugin.zsh", from:oh-my-zsh # Suggest to install if command not found
+zplug "zsh-users/zsh-syntax-highlighting", defer:2       # Syntax highlighting
+zplug "zsh-users/zsh-history-substring-search", defer:3  # ZSH port of Fish shell's history search feature
+
+# Colors
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
+export TERM=xterm-256color
+
+# A command-line fuzzy finder
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
+bindkey -e # use emacs mode (^a ^e etc.)
+zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
+
+# Check for uninstalled plugins and install them.
+zplug check || zplug install
+
+# Source plugins and add commands to $PATH, add  --verbose for details
+zplug load
+
+# Prompt for 'Do you want to install it? (N/y)' if command not found
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+
+# zsh has a spelling corrector
+setopt CORRECT
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# kubectl
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
+
+# kubectx/kubens
+alias kctx=kubectx
+alias kns=kubens
+
+# helm
+source <(helm completion zsh)
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# vault
+export VAULT_ADDR=https://vault.districtm.io
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# launch tmux on non-tmux shells
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ ! "$TERM_PROGRAM" =~ "vscode" ]]; then
+    exec tmux attach
+fi
