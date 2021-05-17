@@ -42,7 +42,7 @@ set -g status-justify "left"
 #### COLOUR
 
 ## OneDark colours
-run-shell ~/.tmux-onedark-theme/tmux-onedark-theme.tmux
+run-shell ~/dotfiles-local/tmux-onedark-theme/tmux-onedark-theme.tmux
 
 #### PLUGINS
 
