@@ -5,6 +5,5 @@
 [user]
   name = Eric Seguin
   email = eric@segwin.ca
-#  email = eric.seguin@districtm.net
 [url "git@github.com:"]
   insteadOf = https://github.com/

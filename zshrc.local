@@ -53,7 +53,7 @@ source <(helm completion zsh)
 # Go
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$(go env GOROOT)/bin:$GOPATH/bin
 
 # vault
 export VAULT_ADDR=https://vault.districtm.io
