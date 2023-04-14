@@ -7,3 +7,7 @@
   email = eric@segwin.ca
 [url "git@github.com:"]
   insteadOf = https://github.com/
+# note: can use ~/.netrc to replace insteadOf, format is:
+# > machine gitlab.com
+# > login my-username
+# > password my-access-token

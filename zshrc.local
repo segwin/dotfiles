@@ -41,6 +41,8 @@ setopt CORRECT
 # kubectl
 source <(kubectl completion zsh)
 alias k=kubectl
+
+autoload -U +X bashcompinit && bashcompinit
 complete -F __start_kubectl k
 
 # kubectx/kubens
@@ -50,13 +52,16 @@ alias kns=kubens
 # helm
 source <(helm completion zsh)
 
+# local bin
+export PATH=$PATH:$HOME/.local/bin
+
 # Go
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOROOT)/bin:$GOPATH/bin
 
 # vault
-export VAULT_ADDR=https://vault.districtm.io
+export VAULT_ADDR=https://127.0.0.1:8200
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
@@ -64,6 +69,6 @@ complete -o nospace -C /usr/bin/vault vault
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # launch tmux on non-tmux shells
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ ! "$TERM_PROGRAM" =~ "vscode" ]]; then
-    exec tmux attach
-fi
+# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ ! "$TERM_PROGRAM" =~ "vscode" ]]; then
+#     exec tmux attach
+# fi
