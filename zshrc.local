@@ -41,10 +41,7 @@ setopt CORRECT
 # kubectl
 source <(kubectl completion zsh)
 alias k=kubectl
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 autoload -U +X bashcompinit && bashcompinit
 complete -F __start_kubectl k
 
