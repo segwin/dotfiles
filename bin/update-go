@@ -1,5 +1,15 @@
 #!/bin/bash
 
+arch=$(arch)
+if [[ "$arch" = "aarch64" ]]; then
+    arch="arm64"
+fi
+
+os="linux"
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    os="darwin"
+fi
+
 version=$1
 if [ -z "$version" ]; then
   echo "Argument 1 (version) is required"
@@ -8,10 +18,10 @@ fi
 
 tmpdir=$(mktemp -d)
 cd "$tmpdir"
-curl -LO https://go.dev/dl/go$version.linux-amd64.tar.gz
+curl -LO https://go.dev/dl/go$version.$os-$arch.tar.gz
 
 sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go$version.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go$version.$os-$arch.tar.gz
 rm -rf "$tmpdir"
 
 go version

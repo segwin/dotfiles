@@ -20,7 +20,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 export TERM=xterm-256color
 
 # A command-line fuzzy finder
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
+#zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
 bindkey -e # use emacs mode (^a ^e etc.)
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 
@@ -41,7 +41,10 @@ setopt CORRECT
 # kubectl
 source <(kubectl completion zsh)
 alias k=kubectl
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 autoload -U +X bashcompinit && bashcompinit
 complete -F __start_kubectl k
 
@@ -63,12 +66,14 @@ export PATH=$PATH:$(go env GOROOT)/bin:$GOPATH/bin
 # vault
 export VAULT_ADDR=https://127.0.0.1:8200
 
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# launch tmux on non-tmux shells
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ ! "$TERM_PROGRAM" =~ "vscode" ]]; then
-#     exec tmux attach
-# fi
+# configure arm64 or x86_64 brew based on shell arch 
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
