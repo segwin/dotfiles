@@ -1,0 +1,2 @@
+#export GOPRIVATE=example.com
+#export GONOSUMDB=example.com

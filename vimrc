@@ -30,7 +30,6 @@ Plug 'scrooloose/nerdtree'                  " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'          " Git status symbols in NERDTree
 Plug 'majutsushi/tagbar'                    " Code navigation
 Plug 'tpope/vim-fugitive'                   " Git plugin
-Plug 'christoomey/vim-tmux-navigator'       " Navigate seamlessly between vim and tmux splits
 
 " Shortcuts
 "Plug 'vim-scripts/DrawIt'                   " Ascii drawing plugin

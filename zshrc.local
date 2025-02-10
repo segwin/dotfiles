@@ -8,7 +8,6 @@ zplug "zplug/zplug"                                     # Let zplug manage zplug
 zplug "yous/vanilli.sh"                                 # A lightweight start point of shell configuration
 zplug "zsh-users/zsh-completions"                       # Additional completion definitions for Zsh
 zplug "zsh-users/zsh-autosuggestions"                   # suggest commands from history
-# zplug "yous/lime"                                       # Simple prompt
 zplug "nojhan/liquidprompt"                             # more complexe prompt
 #zplug "chriskempson/base16-shell"                       # Color palette
 zplug "plugins/command-not-found.plugin.zsh", from:oh-my-zsh # Suggest to install if command not found
@@ -20,7 +19,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=243"
 export TERM=xterm-256color
 
 # A command-line fuzzy finder
-#zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
 bindkey -e # use emacs mode (^a ^e etc.)
 zplug "junegunn/fzf", use:"shell/key-bindings.zsh"
 

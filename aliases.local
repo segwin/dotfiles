@@ -1,1 +1,2 @@
 alias kustomize="kubectl kustomize"
+alias klocal="kubectl --context docker-desktop"
